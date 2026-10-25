@@ -1,12 +1,12 @@
-
 /* Wrapper do card e anel animado */
 .empresa-card-wrapper {
   display: block;
   width: 100%;
+  height: 100%;
   min-width: 0;
   box-sizing: border-box;
   border-radius: 16px;
-  padding: 4px;
+  padding: 2px;
   transition: transform 0.2s;
   position: relative;
 }
@@ -61,8 +61,8 @@
 /* Imagens padronizadas */
 .imagem-container {
   width: 100%;
-  height: 190px;
-  flex: 0 0 190px;
+  height: 150px;
+  flex: 0 0 150px;
   overflow: hidden;
   background: #eef2f7;
 }
@@ -77,8 +77,8 @@
 
 .imagem-placeholder {
   width: 100%;
-  height: 190px;
-  flex: 0 0 190px;
+  height: 150px;
+  flex: 0 0 150px;
   background: #eef2f7;
   display: flex;
   align-items: center;
@@ -87,23 +87,23 @@
   font-style: italic;
 }
 
-/* Conteúdo: ocupa o espaço restante do card */
+/* Conteúdo */
 .conteudo {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1 1 auto;
   min-width: 0;
-  padding: 14px;
+  padding: 10px;
   box-sizing: border-box;
 }
 
-/* Nome com altura reservada para até duas linhas */
+/* Nome com espaço para até duas linhas */
 .nome {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.35;
   font-weight: 600;
   color: #172b4d;
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   min-height: 2.7em;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -117,20 +117,21 @@
 .avaliacao {
   display: flex;
   align-items: center;
-  min-height: 24px;
-  margin-bottom: 8px;
+  flex-wrap: wrap;
+  min-height: 22px;
+  margin-bottom: 6px;
 }
 
 .estrela {
   color: #f4b400;
-  font-size: 1.2rem;
+  font-size: 1rem;
   white-space: nowrap;
 }
 
 .rating-valor {
-  margin-left: 8px;
+  margin-left: 5px;
   color: #64748b;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 /* Categorias */
@@ -138,42 +139,51 @@
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
-  gap: 6px;
-  min-height: 28px;
-  margin-bottom: 8px;
+  gap: 5px;
+  min-height: 26px;
+  margin-bottom: 6px;
 }
 
 .tag {
   background: #e8edf3;
   border-radius: 14px;
-  padding: 5px 9px;
-  font-size: 0.78rem;
+  padding: 4px 8px;
+  font-size: 0.72rem;
   line-height: 1.2;
   color: #334155;
+  overflow-wrap: anywhere;
 }
 
 /* Endereço */
 .endereco {
   display: flex;
   align-items: flex-start;
+  min-width: 0;
   color: #475569;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   line-height: 1.4;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.endereco .material-icons {
+  flex: 0 0 auto;
 }
 
 /* Contato */
 .contato {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  overflow-wrap: anywhere;
 }
 
 .telefone {
   display: flex;
   align-items: center;
+  min-width: 0;
   color: #087cff;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   overflow-wrap: anywhere;
 }
 
@@ -186,56 +196,62 @@
 .distancia {
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin: 0 0 12px;
+  gap: 4px;
+  margin: 0 0 8px;
   color: #2563eb;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
+  overflow-wrap: anywhere;
 }
 
 .distancia .material-icons {
-  font-size: 1.1rem;
+  flex: 0 0 auto;
+  font-size: 1rem;
   margin-right: 0;
 }
 
-
+/* Botões */
 .botoes {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: stretch;
-  gap: 6px;
-  justify-content: space-between;
+  gap: 5px;
   margin-top: auto;
-  padding-top: 4px;
+  padding-top: 6px;
+  min-width: 0;
 }
 
 .btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 1 1 0;
+  gap: 3px;
+  width: 100%;
   min-width: 0;
-  height: 44px;
-  min-height: 44px;
-  padding: 0 6px;
+  min-height: 42px;
+  height: auto;
+  padding: 6px 4px;
   border: none;
   border-radius: 8px;
   box-sizing: border-box;
   font-family: inherit;
-  font-size: 0.76rem;
-  line-height: 1;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.2;
   text-align: center;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
   cursor: pointer;
   transition: background 0.2s;
 }
 
 .btn .material-icons {
-  flex-shrink: 0;
-  margin-right: 4px;
-  font-size: 1rem;
+  flex: 0 0 auto;
+  margin: 0;
+  font-size: 0.9rem;
   line-height: 1;
 }
-
 
 .btn.maps {
   background: #2196f3;
@@ -258,7 +274,7 @@
 /* Ícones gerais */
 .material-icons {
   margin-right: 4px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 /* Responsividade */
@@ -273,24 +289,67 @@
 
   .imagem-container,
   .imagem-placeholder {
-    height: 170px;
-    flex-basis: 170px;
+    height: 120px;
+    flex-basis: 120px;
   }
 
   .conteudo {
-    padding: 12px;
+    padding: 9px;
   }
 
   .nome {
-    font-size: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .endereco {
+    font-size: 0.75rem;
+  }
+
+  .distancia {
+    font-size: 0.76rem;
   }
 
   .btn {
     min-height: 42px;
-    font-size: 0.76rem;
+    padding: 6px 3px;
+    font-size: 0.65rem;
+    gap: 2px;
   }
 
   .btn .material-icons {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Celulares muito estreitos */
+@media (max-width: 360px) {
+  .conteudo {
+    padding: 7px;
+  }
+
+  .botoes {
+    gap: 4px;
+  }
+
+  .btn {
+    font-size: 0.6rem;
+    padding: 5px 2px;
+  }
+
+  .btn .material-icons {
+    font-size: 0.72rem;
+  }
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  .empresa-card-wrapper.tem-stories {
+    animation: none;
+  }
+
+  .empresa-card,
+  .empresa-card-wrapper,
+  .btn {
+    transition: none;
   }
 }
