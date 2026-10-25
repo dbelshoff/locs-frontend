@@ -1,6 +1,4 @@
 export const environment = {
   production: true,
-  //apiUrl: 'https://projetox-production.up.railway.app/api',
-
-  apiUrl: 'locs-backend.railway.internal/api',
+  apiUrl: 'https://locs-backend-production.up.railway.app/api',
 };
