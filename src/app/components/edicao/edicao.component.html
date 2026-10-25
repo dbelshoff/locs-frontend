@@ -1,0 +1,139 @@
+<div class="dashboard-container">
+  <div class="content">
+    <h2>Editar informações da empresa</h2>
+
+    <!-- Mensagens -->
+    <div *ngIf="mensagem" class="success">{{ mensagem }}</div>
+    <div *ngIf="erro" class="error">{{ erro }}</div>
+
+    <form [formGroup]="editForm" (ngSubmit)="salvarEdicao()" class="edit-form">
+      <div class="form-group">
+        <label for="nome">Nome do Estabelecimento</label>
+        <input
+          type="text"
+          id="nome"
+          formControlName="nome"
+          class="form-control"
+          placeholder="Nome do estabelecimento"
+        />
+        <div
+          *ngIf="editForm.get('nome')?.invalid && editForm.get('nome')?.touched"
+          class="text-danger"
+        >
+          Nome é obrigatório.
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group" style="flex: 2">
+          <label for="logradouro">Logradouro</label>
+          <input
+            type="text"
+            id="logradouro"
+            formControlName="logradouro"
+            class="form-control"
+            placeholder="Rua ou avenida"
+          />
+        </div>
+
+        <div class="form-group" style="flex: 1; max-width: 120px">
+          <label for="numero">Número</label>
+          <input
+            type="text"
+            id="numero"
+            formControlName="numero"
+            class="form-control"
+            placeholder="Nº"
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="bairro">Bairro</label>
+          <input
+            type="text"
+            id="bairro"
+            formControlName="bairro"
+            class="form-control"
+            placeholder="Bairro"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="cidade">Cidade</label>
+          <input
+            type="text"
+            id="cidade"
+            formControlName="cidade"
+            class="form-control"
+            placeholder="Cidade"
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group" style="max-width: 120px">
+          <label for="estado">Estado</label>
+          <input
+            type="text"
+            id="estado"
+            formControlName="estado"
+            class="form-control"
+            placeholder="UF"
+          />
+        </div>
+
+        <div class="form-group" style="max-width: 160px">
+          <label for="cep">CEP</label>
+          <input
+            type="text"
+            id="cep"
+            formControlName="cep"
+            class="form-control"
+            placeholder="12345-678"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="telefone">Telefone</label>
+          <input
+            type="text"
+            id="telefone"
+            formControlName="telefone"
+            class="form-control"
+            placeholder="+55XXXXXXXXXX"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="fotoUrl">URL da Foto (opcional)</label>
+        <input
+          type="text"
+          id="fotoUrl"
+          formControlName="fotoUrl"
+          class="form-control"
+          placeholder="URL da foto"
+        />
+      </div>
+
+      <div class="btns">
+        <button
+          type="submit"
+          class="btn-custom"
+          [disabled]="editForm.invalid || isLoading"
+        >
+          Salvar Alterações
+        </button>
+        <button
+          type="button"
+          class="btn-custom btn-secondary"
+          (click)="cancelarEdicao()"
+        >
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

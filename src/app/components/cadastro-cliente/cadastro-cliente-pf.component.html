@@ -1,0 +1,73 @@
+<div class="cadastro-container">
+  <h2>Cadastro de Cliente</h2>
+  <form #form="ngForm" (ngSubmit)="cadastrar(form)">
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="cliente.nome"
+        name="nome"
+        required
+        #nome="ngModel"
+      />
+      <mat-error *ngIf="nome.invalid && nome.touched">
+        Nome é obrigatório.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        type="email"
+        [(ngModel)]="cliente.email"
+        name="email"
+        required
+        email
+        #email="ngModel"
+      />
+      <mat-error *ngIf="email.invalid && email.touched">
+        Email válido é obrigatório.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Senha</mat-label>
+      <input
+        matInput
+        type="password"
+        [(ngModel)]="cliente.senhaHash"
+        name="senha"
+        required
+        autocomplete="new-password"
+        #senha="ngModel"
+      />
+      <mat-error *ngIf="senha.invalid && senha.touched">
+        Senha é obrigatória.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Telefone</mat-label>
+      <input
+        matInput
+        type="tel"
+        [(ngModel)]="cliente.telefone"
+        name="telefone"
+        required
+        #telefone="ngModel"
+      />
+      <mat-error *ngIf="telefone.invalid && telefone.touched">
+        Telefone é obrigatório.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Substituí o botão do Angular Material por um botão HTML puro -->
+    <button type="submit" class="botao-customizado" [disabled]="form.invalid">
+      Cadastrar
+    </button>
+  </form>
+
+  <p class="mensagem" *ngIf="mensagem">{{ mensagem }}</p>
+</div>

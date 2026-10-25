@@ -1,0 +1,275 @@
+.localizacao {
+  padding: 0;
+}
+
+.localizacao-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  color: #2e7d32;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.localizacao-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background-color: #e6ffe6;
+  border-radius: 6px;
+}
+
+.localizacao-header span {
+  flex: 1;
+  text-align: left;
+}
+
+.localizacao-header button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 12px;
+}
+
+.localizacao-header button:hover {
+  background-color: #0051a9;
+}
+
+.form-localizacao {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  padding: 1rem;
+  background-color: #e6ffe6;
+  border: 1px solid #a5d6a7;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.form-localizacao select,
+.form-localizacao input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-localizacao input[type="text"]::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.form-localizacao label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.form-localizacao select:focus,
+.form-localizacao input[type="text"]:focus {
+  border-color: #007BFF;
+  outline: none;
+  box-shadow: 0 0 4px rgba(63, 81, 181, 0.4);
+}
+
+.form-localizacao button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 1rem;
+  align-self: center;
+}
+
+.form-localizacao button:hover {
+  background-color: #0051a9;
+}
+
+.autocomplete {
+  position: relative;
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.suggestions li {
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  color: #000000;
+  font-size: 16px;
+}
+
+.suggestions li:hover,
+.suggestions li.selected {
+  background-color: #e6f3ff;
+
+}
+.localizacao-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 12px;
+  padding: 18px;
+  border: 1px solid #e1e8f2;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #172b4d;
+  text-align: left;
+}
+
+.status-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #e8f0ff;
+  color: #2563eb;
+}
+
+.status-icone .material-icons {
+  font-size: 24px;
+}
+
+.status-conteudo {
+  flex: 1;
+  min-width: 0;
+}
+
+.status-conteudo strong {
+  display: block;
+  font-size: 14px;
+  color: #172b4d;
+}
+
+.status-conteudo p {
+  margin: 5px 0 12px;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.status-progresso {
+  height: 5px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #e8edf5;
+}
+
+.status-progresso-barra {
+  width: 40%;
+  height: 100%;
+  border-radius: inherit;
+  background: #2563eb;
+  animation: progresso-indeterminado 1.5s ease-in-out infinite;
+}
+
+@keyframes progresso-indeterminado {
+  0% {
+    transform: translateX(-110%);
+  }
+
+  100% {
+    transform: translateX(260%);
+  }
+}
+
+.localizacao-erro {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 14px;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  background: #fff7f7;
+  color: #991b1b;
+}
+
+.localizacao-erro > .material-icons {
+  flex-shrink: 0;
+}
+
+.localizacao-erro div {
+  flex: 1;
+}
+
+.localizacao-erro strong {
+  font-size: 13px;
+}
+
+.localizacao-erro p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.localizacao-erro button {
+  flex-shrink: 0;
+  margin: 0;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 6px;
+  background: #007bff;
+  color: #fff;
+  font-size: 12px;
+}
+
+
+.localizacao-erro button {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.localizacao-erro button:hover {
+  background: #0051a9;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-progresso-barra {
+    animation: none;
+    width: 100%;
+  }
+}
+

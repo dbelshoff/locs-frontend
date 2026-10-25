@@ -1,0 +1,296 @@
+
+/* Wrapper do card e anel animado */
+.empresa-card-wrapper {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  border-radius: 16px;
+  padding: 4px;
+  transition: transform 0.2s;
+  position: relative;
+}
+
+.empresa-card-wrapper.tem-stories {
+  background: conic-gradient(
+    #f4b400,
+    #ff3f3f,
+    #ff4da6,
+    #c633ff,
+    #4cafff,
+    #f4b400
+  );
+  animation: girar 3s linear infinite;
+}
+
+@keyframes girar {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.empresa-card-wrapper.tem-stories .empresa-card {
+  border-radius: 12px;
+  background: #fff;
+  padding: 2px;
+}
+
+/* Card principal */
+.empresa-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+}
+
+.empresa-card:hover {
+  box-shadow: 0 7px 20px rgba(15, 23, 42, 0.12);
+}
+
+/* Imagens padronizadas */
+.imagem-container {
+  width: 100%;
+  height: 190px;
+  flex: 0 0 190px;
+  overflow: hidden;
+  background: #eef2f7;
+}
+
+.empresa-imagem {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.imagem-placeholder {
+  width: 100%;
+  height: 190px;
+  flex: 0 0 190px;
+  background: #eef2f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* Conteúdo: ocupa o espaço restante do card */
+.conteudo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  padding: 14px;
+  box-sizing: border-box;
+}
+
+/* Nome com altura reservada para até duas linhas */
+.nome {
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: #172b4d;
+  margin: 0 0 8px;
+  min-height: 2.7em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+
+/* Avaliação */
+.avaliacao {
+  display: flex;
+  align-items: center;
+  min-height: 24px;
+  margin-bottom: 8px;
+}
+
+.estrela {
+  color: #f4b400;
+  font-size: 1.2rem;
+  white-space: nowrap;
+}
+
+.rating-valor {
+  margin-left: 8px;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+/* Categorias */
+.categorias {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 6px;
+  min-height: 28px;
+  margin-bottom: 8px;
+}
+
+.tag {
+  background: #e8edf3;
+  border-radius: 14px;
+  padding: 5px 9px;
+  font-size: 0.78rem;
+  line-height: 1.2;
+  color: #334155;
+}
+
+/* Endereço */
+.endereco {
+  display: flex;
+  align-items: flex-start;
+  color: #475569;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin-bottom: 8px;
+  overflow-wrap: anywhere;
+}
+
+/* Contato */
+.contato {
+  margin-bottom: 8px;
+}
+
+.telefone {
+  display: flex;
+  align-items: center;
+  color: #087cff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
+.telefone:hover {
+  text-decoration: none;
+  color: #334155;
+}
+
+/* Distância */
+.distancia {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 12px;
+  color: #2563eb;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.distancia .material-icons {
+  font-size: 1.1rem;
+  margin-right: 0;
+}
+
+
+.botoes {
+  display: flex;
+  align-items: stretch;
+  gap: 6px;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 44px;
+  min-height: 44px;
+  padding: 0 6px;
+  border: none;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 0.76rem;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn .material-icons {
+  flex-shrink: 0;
+  margin-right: 4px;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+
+.btn.maps {
+  background: #2196f3;
+  color: #fff;
+}
+
+.btn.maps:hover {
+  background: #1976d2;
+}
+
+.btn.contato {
+  background: #4caf50;
+  color: #fff;
+}
+
+.btn.contato:hover {
+  background: #388e3c;
+}
+
+/* Ícones gerais */
+.material-icons {
+  margin-right: 4px;
+  font-size: 1.2rem;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .empresa-card-wrapper {
+    padding: 1px;
+  }
+
+  .empresa-card {
+    margin: 0;
+  }
+
+  .imagem-container,
+  .imagem-placeholder {
+    height: 170px;
+    flex-basis: 170px;
+  }
+
+  .conteudo {
+    padding: 12px;
+  }
+
+  .nome {
+    font-size: 1rem;
+  }
+
+  .btn {
+    min-height: 42px;
+    font-size: 0.76rem;
+  }
+
+  .btn .material-icons {
+    font-size: 0.9rem;
+  }
+}

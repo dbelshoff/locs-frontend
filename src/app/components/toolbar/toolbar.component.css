@@ -1,0 +1,86 @@
+mat-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0051a9;
+  padding: 0 1rem;
+  color: white;
+}
+
+.spacer {
+  flex: 1;
+}
+
+button {
+  color: white;
+}
+
+.hamburger-button {
+  z-index: 1003; /* Acima do sidenav e do backdrop */
+}
+
+mat-sidenav-container {
+  position: absolute;
+  top: 64px; /* Começa abaixo da toolbar */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: 1001;
+  pointer-events: none;
+}
+
+mat-sidenav {
+  width: 250px;
+  background-color: #ffffff;
+  padding: 16px;
+  z-index: 1002;
+  pointer-events: auto;
+}
+
+mat-sidenav-content {
+  display: none;
+}
+
+/* Garante que o backdrop seja clicável e quase transparente */
+.mat-sidenav-backdrop.mat-sidenav-shown {
+  background-color: rgba(0, 0, 0, 0.1);
+  pointer-events: auto;
+}
+
+mat-nav-list a {
+  color: #333;
+  font-size: 1rem;
+  line-height: 2.5;
+}
+
+mat-nav-list a:hover {
+  background-color: #f0f0f0;
+  color: #0051a9;
+}
+
+.sidenav-user {
+  padding: 16px;
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.sidenav-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px;
+}
+
+.sidenav-header button {
+  color: #333;
+  size: 5px;
+}

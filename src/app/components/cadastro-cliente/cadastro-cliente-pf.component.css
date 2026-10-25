@@ -1,0 +1,55 @@
+.cadastro-container {
+  max-width: 420px;
+  margin: 60px auto;
+  padding: 30px 25px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  font-family: 'Inter', sans-serif;
+}
+
+.cadastro-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Botão HTML puro com estilo próprio */
+.botao-customizado {
+  width: 100%;
+  padding: 12px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.botao-customizado:hover {
+  background-color: #303f9f;
+  transform: translateY(-1px);
+}
+
+.botao-customizado:disabled {
+  background-color: #b0c4de;
+  cursor: not-allowed;
+}
+
+.mensagem {
+  color: #0051a9;
+  margin-top: 16px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.mensagem.error {
+  color: red;
+}

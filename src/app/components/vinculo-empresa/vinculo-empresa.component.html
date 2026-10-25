@@ -1,0 +1,151 @@
+<div class="vinculo-empresa-container">
+  <div class="content">
+    <h2>Vincular Estabelecimento</h2>
+
+    <!-- Se não logado -->
+    <div *ngIf="!isLoggedIn" class="error">
+      <h2>Você precisa estar logado para acessar esta página.</h2>
+      <button class="btn-custom" (click)="irParaLogin()">Ir para Login</button>
+    </div>
+
+    <!-- Se logado, mas sem empresas vinculadas -->
+    <div
+      *ngIf="isLoggedIn && !temEmpresasVinculadas && !desejaVincular"
+      class="error"
+    >
+      <h2>Você não possui empresas vinculadas. Deseja vincular alguma?</h2>
+      <div class="categoria">
+        <button class="btn-custom" (click)="setDesejaVincular(true)">
+          Sim
+        </button>
+        <button class="btn-custom btn-secondary" (click)="irParaHome()">
+          Não
+        </button>
+      </div>
+    </div>
+
+    <!-- Fluxo de vinculação -->
+    <div *ngIf="isLoggedIn && desejaVincular">
+      <!-- Mensagens -->
+      <div *ngIf="mensagem" class="success text-center">{{ mensagem }}</div>
+      <div *ngIf="erro" class="error">{{ erro }}</div>
+
+      <!-- Campo de busca (só aparece se nenhum estabelecimento foi selecionado) -->
+      <div *ngIf="!selectedEstabelecimento" class="categoria">
+        <div [formGroup]="buscaForm" class="categoria-input-wrapper">
+          <label for="query">Buscar Estabelecimento</label>
+          <input
+            type="text"
+            id="query"
+            formControlName="query"
+            class="form-control"
+            placeholder="Digite o nome ou endereço"
+            (input)="buscarEstabelecimentos($event)"
+          />
+          <div
+            *ngIf="
+              buscaForm.get('query')?.invalid && buscaForm.get('query')?.touched
+            "
+            class="text-danger"
+          >
+            Campo obrigatório.
+          </div>
+        </div>
+      </div>
+
+      <!-- Carregando -->
+      <div *ngIf="isLoading" class="loading">
+        <div class="spinner"></div>
+      </div>
+
+      <!-- Lista de resultados -->
+      <div
+        *ngIf="!selectedEstabelecimento && estabelecimentos.length > 0"
+        class="lista-empresas"
+      >
+        <div
+          *ngFor="let est of estabelecimentos"
+          class="list-group-item"
+          (click)="selecionarEstabelecimento(est)"
+        >
+          <strong>{{ est.nome }}</strong
+          ><br />
+          <small>{{ est.formattedAddress }}</small>
+        </div>
+      </div>
+
+      <!-- Card do estabelecimento selecionado -->
+      <div *ngIf="selectedEstabelecimento" class="estabelecimento-selecionado">
+        <div class="list-group-item selected">
+          <strong>{{ selectedEstabelecimento.nome }}</strong
+          ><br />
+          <small>{{ selectedEstabelecimento.formattedAddress }}</small>
+        </div>
+      </div>
+
+      <!-- Verificação de telefone -->
+      <div *ngIf="mostrarVerificacaoTelefone" class="categoria">
+        <div [formGroup]="verificacaoForm" class="categoria-input-wrapper">
+          <br />
+          <br />
+          <label for="telefone">Insira o número de telefone da empresa.</label>
+          <input
+            type="text"
+            id="telefone"
+            formControlName="telefone"
+            class="form-control"
+            placeholder="+55XXXXXXXXXX"
+          />
+          <div
+            *ngIf="
+              verificacaoForm.get('telefone')?.invalid &&
+              verificacaoForm.get('telefone')?.touched
+            "
+            class="text-danger"
+          >
+            Insira um número de telefone válido no formato +55XXXXXXXXXX.
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="btn-custom"
+          [disabled]="verificacaoForm.invalid"
+          (click)="enviarCodigo()"
+        >
+          Enviar Código
+        </button>
+      </div>
+
+      <!-- Validação do código -->
+      <div *ngIf="mostrarValidacaoCodigo" class="categoria">
+        <div [formGroup]="validacaoForm" class="categoria-input-wrapper">
+          <label for="code">Código Recebido</label>
+          <input
+            type="text"
+            id="code"
+            formControlName="code"
+            class="form-control"
+            placeholder="Digite o código"
+          />
+          <div
+            *ngIf="
+              validacaoForm.get('code')?.invalid &&
+              validacaoForm.get('code')?.touched
+            "
+            class="text-danger"
+          >
+            Insira um código válido (mínimo 6 caracteres).
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="btn-custom"
+          [disabled]="validacaoForm.invalid"
+          (click)="validarCodigo()"
+        >
+          Validar Código
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

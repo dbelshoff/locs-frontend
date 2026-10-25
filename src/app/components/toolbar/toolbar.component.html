@@ -1,0 +1,64 @@
+<mat-toolbar color="primary">
+  <!-- Botão Home -->
+  <button
+    (click)="toHome()"
+    mat-icon-button
+    class="example-icon"
+    aria-label="Botão para página inicial"
+  >
+    <mat-icon>home</mat-icon>
+  </button>
+
+  <!-- Título -->
+  <span>LOCS</span>
+  <span class="spacer"></span>
+
+  <!-- Botão do menu hamburguer (sempre visível) -->
+  <!-- <button
+    mat-icon-button
+    (click)="toggleSidenav()"
+    aria-label="Abrir menu"
+    class="hamburger-button"
+    disabled
+  >
+    <mat-icon>menu</mat-icon>
+  </button> -->
+</mat-toolbar>
+
+<!-- Sidenav para o menu hamburguer -->
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over" position="end">
+    <div class="sidenav-header">
+      <button
+        mat-icon-button
+        (click)="sidenav.close()"
+        aria-label="Fechar menu"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <mat-nav-list>
+      <!-- Conteúdo para usuário logado -->
+      <div *ngIf="authService.isLoggedIn()">
+        <p *ngIf="cliente" class="sidenav-user">Olá, {{ cliente.nome }}</p>
+        <a mat-list-item (click)="irParaPerfil(); sidenav.close()">Perfil</a>
+        <a mat-list-item (click)="irParaCarteira(); sidenav.close()"
+          >Carteira</a
+        >
+        <a mat-list-item (click)="irParaDashboard(); sidenav.close()"
+          >Dashboard</a
+        >
+        <a mat-list-item (click)="sair(); sidenav.close()">Sair</a>
+      </div>
+
+      <!-- Conteúdo para usuário não logado -->
+      <div *ngIf="!authService.isLoggedIn()">
+        <a mat-list-item (click)="irParaCadastro(); sidenav.close()"
+          >Cadastre-se</a
+        >
+        <a mat-list-item (click)="irParaLogin(); sidenav.close()">Entrar</a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content></mat-sidenav-content>
+</mat-sidenav-container>

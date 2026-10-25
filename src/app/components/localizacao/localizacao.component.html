@@ -1,0 +1,146 @@
+<ng-template #formLocalizacao>
+  <div class="form-localizacao">
+    <div class="form-group">
+      <label for="estado">Estado:</label>
+      <select
+        id="estado"
+        [(ngModel)]="estadoSelecionado"
+        (change)="onEstadoChange()"
+      >
+        <option value="">Selecione um estado</option>
+        <option *ngFor="let estado of estados" [value]="estado">
+          {{ estado }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group" *ngIf="cidades.length > 0">
+      <label for="cidade">Cidade:</label>
+      <div class="autocomplete">
+        <input
+          id="cidade"
+          type="text"
+          [(ngModel)]="cidadeSelecionada"
+          (input)="filtrarCidades()"
+          (blur)="onCidadeBlur()"
+          (keydown)="onCidadeKeydown($event)"
+          placeholder="Digite o nome da cidade"
+          aria-autocomplete="list"
+          aria-controls="cidades-sugestoes"
+        />
+        <ul
+          id="cidades-sugestoes"
+          class="suggestions"
+          *ngIf="cidadesFiltradas.length > 0 && mostrarSugestoes"
+        >
+          <li
+            *ngFor="let cidade of cidadesFiltradas; let i = index"
+            [class.selected]="i === indiceSelecionado"
+            (mousedown)="selecionarCidade(cidade)"
+          >
+            {{ cidade }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="form-group" *ngIf="cidadeSelecionada">
+      <label for="bairro">Bairro:</label>
+      <input
+        id="bairro"
+        type="text"
+        [(ngModel)]="bairroSelecionado"
+        placeholder="Digite o nome do bairro"
+      />
+    </div>
+
+    <button (click)="alterarLocalizacao()">OK</button>
+  </div>
+</ng-template>
+
+<div class="localizacao">
+  <div
+    class="localizacao-status"
+    *ngIf="
+      !mostrandoFormulario &&
+      (estadoCarregamento === 'localizando' ||
+        estadoCarregamento === 'buscando')
+    "
+  >
+    <div class="status-icone">
+      <span class="material-icons">
+        {{ estadoCarregamento === "localizando" ? "my_location" : "search" }}
+      </span>
+    </div>
+
+    <div class="status-conteudo">
+      <strong>
+        {{
+          estadoCarregamento === "localizando"
+            ? "Obtendo sua localização..."
+            : "Buscando empresas próximas..."
+        }}
+      </strong>
+
+      <p>
+        {{
+          estadoCarregamento === "localizando"
+            ? "Estamos identificando sua região. Isso pode levar alguns segundos."
+            : "Estamos procurando lojas, serviços e promoções perto de você."
+        }}
+      </p>
+
+      <div class="status-progresso">
+        <div class="status-progresso-barra"></div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="localizacao-erro"
+    *ngIf="estadoCarregamento === 'erro' && !mostrandoFormulario"
+  >
+    <span class="material-icons">location_off</span>
+
+    <div>
+      <strong>Não conseguimos identificar sua localização.</strong>
+      <p>Você pode escolher o estado e o município manualmente.</p>
+    </div>
+
+    <button type="button" (click)="alterarLocalizacao()">Escolher</button>
+  </div>
+  <div class="localizacao-info">
+    <div class="localizacao-header" *ngIf="!mostrandoFormulario">
+      <span>
+        📍
+        <ng-container
+          *ngIf="
+            estadoAtual || cidadeAtual || bairroAtual;
+            else selecioneEstado
+          "
+        >
+          Você está em
+          <ng-container *ngIf="bairroAtual">{{ bairroAtual }}</ng-container>
+          <ng-container *ngIf="bairroAtual && (cidadeAtual || estadoAtual)"
+            >,</ng-container
+          >
+          <ng-container *ngIf="cidadeAtual">{{ cidadeAtual }}</ng-container>
+          <ng-container *ngIf="cidadeAtual && estadoAtual">/</ng-container>
+          <ng-container *ngIf="estadoAtual">{{ estadoAtual }}</ng-container>
+        </ng-container>
+        <ng-template #selecioneEstado>
+          Informe uma localização para prosseguir
+        </ng-template>
+      </span>
+      <button
+        (click)="alterarLocalizacao()"
+        aria-label="Alterar a localização atual"
+      >
+        Alterar
+      </button>
+    </div>
+    <ng-container *ngIf="mostrandoFormulario">
+      <ng-container *ngTemplateOutlet="formLocalizacao"></ng-container>
+    </ng-container>
+  </div>
+</div>

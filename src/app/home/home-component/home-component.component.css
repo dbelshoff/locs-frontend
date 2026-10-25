@@ -1,0 +1,257 @@
+
+/* =========================================
+   CONTAINER PRINCIPAL
+========================================= */
+
+.home-container {
+  min-height: 100dvh;
+  background: #f5f7fb;
+}
+
+.home-content {
+  padding-bottom: 84px;
+}
+
+/* =========================================
+   NAVEGAÇÃO INFERIOR
+========================================= */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  box-shadow: 0 -3px 12px rgba(15, 23, 42, 0.06);
+}
+
+.nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 5px 0;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.nav-item .material-icons {
+  font-size: 24px;
+}
+
+.nav-item.ativo {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+/* Navegação em telas maiores */
+@media (min-width: 768px) {
+  .bottom-nav {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: min(100%, 600px);
+    border: 1px solid #e2e8f0;
+    border-bottom: none;
+    border-radius: 16px 16px 0 0;
+  }
+}
+
+/* =========================================
+   CABEÇALHO DA ABA EXPLORAR
+========================================= */
+
+
+.explorar {
+  margin: 20px 20px 14px;
+  padding: 0;
+}
+
+.explorar h2 {
+  margin: 0 0 7px;
+  color: #172b4d;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.explorar p {
+  margin: 0;
+  color: #64748b;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .explorar {
+    margin: 12px 0 16px;
+  }
+
+  .explorar h2 {
+    font-size: 19px;
+    font-weight: 600;
+  }
+
+  .explorar p {
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================
+   ATALHOS DE CATEGORIAS
+========================================= */
+
+.categorias-atalhos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.categorias-atalhos button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 12px;
+  min-height: 112px;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  background: #ffffff;
+  color: #172b4d;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: left;
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.04);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+  cursor: pointer;
+}
+
+.categorias-atalhos button .material-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #e8f0fe;
+  color: #2563eb;
+  font-size: 24px;
+}
+
+.categorias-atalhos button:active {
+  transform: scale(0.98);
+}
+
+.categorias-atalhos button:focus-visible {
+  outline: 3px solid #9dcaff;
+  outline-offset: 3px;
+}
+
+/* Quatro atalhos em telas maiores */
+@media (min-width: 600px) {
+  .categorias-atalhos {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* =========================================
+   ORGANIZAÇÃO DA ABA EXPLORAR
+========================================= */
+
+/* Permite organizar os elementos internos da lista */
+.explorar app-empresa-lista {
+  display: contents;
+}
+
+.explorar app-empresa-lista .empresa-lista-container {
+  display: contents;
+}
+
+/* 1. Pesquisa no topo */
+.explorar app-empresa-lista .categoria {
+  order: 1;
+  width: 100%;
+  margin: 0 0 10px;
+}
+
+/* 2. Atalhos logo abaixo da pesquisa */
+.explorar app-empresa-lista .categorias-atalhos {
+  order: 2;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/* 3. Resultados, carregamento e mensagens */
+.explorar app-empresa-lista .content,
+.explorar app-empresa-lista .loading,
+.explorar app-empresa-lista .error {
+  order: 3;
+  width: 100%;
+}
+
+/* =========================================
+   AJUSTES PARA CELULAR
+========================================= */
+
+@media (max-width: 600px) {
+  .explorar {
+    margin: 6px 0 10px;
+  }
+
+  .explorar-texto h2 {
+    font-size: 19px;
+  }
+
+  .explorar-texto p {
+    font-size: 13px;
+  }
+}
+
+/* =========================================
+   ACESSIBILIDADE
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .categorias-atalhos button {
+    transition: none;
+  }
+}
+
+
+.titulo-explorar {
+  margin: 22px 16px 24px;
+}
+
+.titulo-explorar h1 {
+  margin: 0 0 6px;
+  color: #17365f;
+  font-size: 23px;
+  font-weight: 750;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+}
+
+.titulo-explorar p {
+  margin: 0;
+  color: #718096;
+  font-size: 14px;
+  line-height: 1.5;
+}
+

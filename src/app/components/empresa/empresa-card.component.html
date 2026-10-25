@@ -1,0 +1,69 @@
+<div class="empresa-card-wrapper" [ngClass]="{ 'tem-stories': temStories }">
+  <div class="empresa-card" (click)="abrirPosts()">
+    <!-- Imagem -->
+    <div class="imagem-container" *ngIf="imagemUrl; else semImagem">
+      <img [src]="imagemUrl" [alt]="empresa.nome" class="empresa-imagem" />
+    </div>
+    <ng-template #semImagem>
+      <div class="imagem-placeholder">Sem imagem disponível</div>
+    </ng-template>
+
+    <!-- Conteúdo -->
+    <div class="conteudo">
+      <h3 class="nome">{{ empresa.nome }}</h3>
+
+      <!-- Avaliação -->
+      <div class="avaliacao" *ngIf="empresa.rating">
+        <span
+          *ngFor="let estrela of getEstrelas(empresa.rating)"
+          class="estrela"
+        >
+          <ng-container [ngSwitch]="estrela">
+            <span *ngSwitchCase="'full'">★</span>
+            <span *ngSwitchCase="'half'">☆</span>
+            <span *ngSwitchCase="'empty'">☆</span>
+          </ng-container>
+        </span>
+        <span class="rating-valor">({{ empresa.rating }})</span>
+      </div>
+
+      <!-- Categorias -->
+      <div class="categorias" *ngIf="empresa.types && empresa.types.length > 0">
+        <span *ngFor="let type of empresa.types" class="tag">{{ type }}</span>
+      </div>
+
+      <!-- Endereço -->
+      <p class="endereco">
+        <span class="material-icons">location_on</span>
+        <span>{{ empresa.formattedAddress || "Endereço não disponível" }}</span>
+      </p>
+
+      <div class="distancia" *ngIf="distanciaFormatada as distancia">
+        <span class="material-icons">near_me</span>
+        <span>{{ distancia }}</span>
+      </div>
+
+      <!-- Contato (Telefone) -->
+      <div class="contato" *ngIf="mostrarContato && empresa.telefone">
+        <a [href]="'tel:' + empresa.telefone" class="telefone">
+          <span class="material-icons">phone</span>
+          {{ empresa.telefone }}
+        </a>
+      </div>
+
+      <!-- Botões -->
+      <div class="botoes">
+        <button class="btn maps" (click)="openMaps()">
+          <span class="material-icons">map</span>
+          Ver no Google Maps
+        </button>
+        <button class="btn contato" (click)="toggleContato()">
+          <span class="material-icons">
+            {{ mostrarContato ? "visibility_off" : "visibility" }}
+          </span>
+          {{ mostrarContato ? "Ocultar Contato" : "Mostrar Contato" }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

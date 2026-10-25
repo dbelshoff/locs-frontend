@@ -1,0 +1,783 @@
+
+/* =========================================
+   CONTAINER PRINCIPAL
+========================================= */
+
+.empresa-lista-container {
+  padding: 12px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  color: #172b4d;
+}
+
+/* =========================================
+   PESQUISA DE CATEGORIA
+========================================= */
+
+.categoria {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin: 8px 0 14px;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+}
+
+.categoria-pesquisa {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  gap: 8px;
+  min-width: 0;
+  height: 52px;
+  padding: 5px 7px 5px 12px;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #dce5f2;
+  border-radius: 12px;
+}
+
+.categoria-pesquisa:focus-within {
+  border-color: #b8d5ff;
+}
+
+.icone-pesquisa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  color: #718096;
+  font-size: 21px;
+}
+
+.categoria-input-wrapper {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  width: 0;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.categoria-input-wrapper app-categoria {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Botão de busca integrado */
+
+.btn-buscar-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+  background: #087cff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-buscar-icone:hover {
+  background: #0566d6;
+}
+
+.btn-buscar-icone:active {
+  transform: scale(0.97);
+}
+
+.btn-buscar-icone .material-icons {
+  font-size: 22px;
+}
+
+/* Botão limpar */
+
+.btn-limpar-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #eaf2ff;
+  color: #075bb8;
+  cursor: pointer;
+}
+
+.btn-limpar-icone:hover {
+  background: #d8e8ff;
+}
+
+.btn-limpar-icone .material-icons {
+  font-size: 20px;
+}
+
+.categoria button:focus-visible {
+  outline: 3px solid #9dcaff;
+  outline-offset: 2px;
+}
+
+/* Campo interno do componente de categoria.
+   Os estilos internos do Angular Material também
+   são tratados no categoria.component.css. */
+
+.categoria-input-wrapper {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+}
+
+.categoria-input-wrapper app-categoria {
+  display: block;
+  width: 100%;
+}
+
+/* =========================================
+   BOTÕES GENÉRICOS
+========================================= */
+
+.btn-custom {
+  min-height: 42px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 10px;
+  background: #087cff;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.btn-custom:hover {
+  background: #0566d6;
+}
+
+.btn-custom:active {
+  transform: scale(0.98);
+}
+
+.btn-custom:focus-visible,
+.categorias-atalhos button:focus-visible {
+  outline: 3px solid #9dcaff;
+  outline-offset: 3px;
+}
+
+.btn-secundario {
+  background: #eaf2ff;
+  color: #075bb8;
+}
+
+.btn-secundario:hover {
+  background: #d8e8ff;
+}
+
+.btn-limpar-pesquisa {
+  width: 100%;
+  min-height: 46px;
+  margin-top: 2px;
+}
+
+.btn-limpar-pesquisa .material-icons {
+  font-size: 20px;
+}
+
+/* =========================================
+   ATALHOS DE CATEGORIAS
+========================================= */
+
+.categorias-atalhos {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0 0 26px;
+}
+
+.categorias-atalhos button {
+  min-width: 0;
+  min-height: 96px;
+  padding: 14px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 1px solid #e2eaf5;
+  border-radius: 14px;
+  background: #fff;
+  color: #334765;
+  box-shadow: 0 3px 12px rgba(27, 55, 90, 0.05);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  overflow-wrap: anywhere;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.categorias-atalhos button .material-icons {
+  font-size: 27px;
+  color: #087cff;
+}
+
+.categorias-atalhos button:hover {
+  border-color: #9dcaff;
+  box-shadow: 0 5px 16px rgba(8, 124, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.categorias-atalhos button:active {
+  transform: scale(0.97);
+}
+
+/* =========================================
+   CARREGAMENTO
+========================================= */
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  min-height: 140px;
+  margin: 16px 0;
+  color: #526782;
+  font-size: 14px;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 4px solid #e5edf7;
+  border-top: 4px solid #087cff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================
+   MENSAGEM DE LOCALIZAÇÃO
+========================================= */
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 24px auto;
+  max-width: 440px;
+  padding: 28px 20px;
+  background: #fff;
+  border: 1px solid #e2eaf5;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(27, 55, 90, 0.04);
+}
+
+.error h2 {
+  margin: 14px 0 8px;
+  color: #263b59;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.error p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   ÁREA DE RESULTADOS
+========================================= */
+
+.content {
+  padding: 4px 2px 24px;
+}
+
+.content .titulo-resultados {
+  margin: 0 0 20px;
+  color: #263b59;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* =========================================
+   ESTADO VAZIO
+========================================= */
+
+.estado-vazio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 460px;
+  box-sizing: border-box;
+  margin: 20px auto 32px;
+  padding: 28px 22px 22px;
+  background: #fff;
+  border: 1px solid #e2eaf5;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 26px rgba(27, 55, 90, 0.055);
+}
+
+.estado-vazio-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #eaf2ff;
+  color: #087cff;
+}
+
+.estado-vazio-icone .material-icons {
+  font-size: 36px;
+}
+
+.estado-vazio h2 {
+  margin: 18px 0 8px;
+  color: #172b4d;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.estado-vazio-descricao {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.estado-vazio-descricao strong {
+  color: #334765;
+  overflow-wrap: anywhere;
+}
+
+.estado-vazio-dicas {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  margin: 26px 0 22px;
+  text-align: left;
+}
+
+.dica-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.dica-item > .material-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: #f0f6ff;
+  color: #087cff;
+  font-size: 21px;
+}
+
+.dica-item strong {
+  display: block;
+  margin: 1px 0 4px;
+  color: #263b59;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.dica-item p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.estado-vazio-local {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin: 18px 0 0;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.estado-vazio-local .material-icons {
+  color: #087cff;
+  font-size: 16px;
+}
+
+/* =========================================
+   LISTA DE EMPRESAS
+========================================= */
+
+.lista-empresas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+
+/* =========================================
+   OUTRAS EMPRESAS PRÓXIMAS
+========================================= */
+
+.outras-empresas {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid #dfe7f1;
+}
+
+.outras-empresas h2 {
+  margin: 0 0 18px;
+  color: #263b59;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* =========================================
+   CABEÇALHO DOS RESULTADOS
+========================================= */
+
+.cabecalho-resultados {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0 20px;
+  padding: 15px;
+  background: #fff;
+  border: 1px solid #e2eaf5;
+  border-radius: 14px;
+  box-shadow: 0 3px 12px rgba(27, 55, 90, 0.04);
+}
+
+.resultados-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #eaf2ff;
+  color: #087cff;
+}
+
+.resultados-icone .material-icons {
+  font-size: 25px;
+}
+
+.resultados-texto {
+  min-width: 0;
+}
+
+.resultados-texto h2 {
+  margin: 0 0 5px;
+  color: #172b4d;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.resultados-texto p {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 3px 0 0;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.resultados-texto p .material-icons {
+  color: #087cff;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.resultados-texto strong {
+  color: #334765;
+  overflow-wrap: anywhere;
+}
+
+/* =========================================
+   RESPONSIVIDADE — CELULAR
+========================================= */
+
+@media (max-width: 600px) {
+  .empresa-lista-container {
+    padding: 10px 12px 20px;
+  }
+
+  .categoria {
+    gap: 6px;
+    margin: 8px 0 14px;
+  }
+
+  .categoria-pesquisa {
+    height: 52px;
+    gap: 7px;
+    padding: 5px 7px 5px 10px;
+    border-radius: 12px;
+  }
+
+  .icone-pesquisa {
+    font-size: 20px;
+  }
+
+  .btn-buscar-icone {
+    flex-basis: 38px;
+    width: 38px;
+    height: 38px;
+  }
+
+  .categorias-atalhos {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .categorias-atalhos button {
+    min-height: 86px;
+    padding: 10px 3px;
+    gap: 7px;
+    border-radius: 12px;
+    font-size: 11px;
+  }
+
+  .categorias-atalhos button .material-icons {
+    font-size: 25px;
+  }
+
+  .content {
+    padding: 2px 0 24px;
+  }
+
+  .content .titulo-resultados {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .estado-vazio {
+    margin: 18px auto 26px;
+    padding: 25px 18px 20px;
+    border-radius: 17px;
+  }
+
+  .estado-vazio-icone {
+    width: 64px;
+    height: 64px;
+  }
+
+  .estado-vazio-icone .material-icons {
+    font-size: 32px;
+  }
+
+  .estado-vazio h2 {
+    margin-top: 15px;
+    font-size: 19px;
+  }
+
+  .estado-vazio-dicas {
+    gap: 16px;
+    margin: 23px 0 20px;
+  }
+
+  .dica-item {
+    gap: 10px;
+  }
+
+  .dica-item > .material-icons {
+    width: 35px;
+    height: 35px;
+    font-size: 19px;
+  }
+
+  .lista-empresas {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .outras-empresas {
+    margin-top: 26px;
+    padding-top: 22px;
+  }
+
+  .error {
+    padding: 24px 16px;
+  }
+
+  .cabecalho-resultados {
+    gap: 10px;
+    margin: 6px 0 16px;
+    padding: 12px;
+  }
+
+  .resultados-icone {
+    width: 40px;
+    height: 40px;
+  }
+
+  .resultados-texto h2 {
+    font-size: 16px;
+  }
+}
+
+/* =========================================
+   TELAS MUITO ESTREITAS
+========================================= */
+
+@media (max-width: 380px) {
+  .categoria {
+    gap: 5px;
+  }
+
+  .categoria-pesquisa {
+    gap: 6px;
+    padding-right: 5px;
+    padding-left: 9px;
+  }
+
+  .btn-buscar-icone {
+    flex-basis: 36px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .categorias-atalhos {
+    gap: 5px;
+  }
+
+  .categorias-atalhos button {
+    font-size: 10px;
+    min-height: 80px;
+  }
+
+  .categorias-atalhos button .material-icons {
+    font-size: 22px;
+  }
+
+  .estado-vazio {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+}
+
+/* =========================================
+   ACESSIBILIDADE
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+  }
+
+  .btn-custom,
+  .btn-buscar-icone,
+  .categorias-atalhos button {
+    transition: none;
+  }
+}
+
+
+.titulo-outras-empresas {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin: 28px 0 16px;
+  padding: 16px 12px;
+  border-top: 1px solid #dce5f0;
+}
+
+.titulo-outras-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #e6f0ff;
+  color: #087bff;
+}
+
+.titulo-outras-icone .material-icons {
+  font-size: 23px;
+}
+
+.titulo-outras-texto {
+  min-width: 0;
+}
+
+.titulo-outras-texto h2 {
+  margin: 0;
+  color: #17365f;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-transform: capitalize;
+  overflow-wrap: anywhere;
+}
+
+.titulo-outras-texto p {
+  margin: 4px 0 0;
+  color: #718096;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+  .titulo-outras-empresas {
+    margin-top: 24px;
+    padding: 14px 0;
+  }
+}
+

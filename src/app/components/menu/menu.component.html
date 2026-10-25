@@ -1,0 +1,31 @@
+<!-- Exibir estabelecimento -->
+<div *ngIf="estabelecimento && !isLoading" class="estabelecimento-info">
+  <div class="list-group-item">
+    <strong>{{ estabelecimento.nome }}</strong
+    ><br />
+    <small>{{ estabelecimento.formattedAddress }}</small
+    ><br />
+    <small>Telefone: {{ estabelecimento.telefone }}</small
+    ><br />
+    <small *ngIf="fotoUrl">
+      <img
+        [src]="fotoUrl"
+        alt="Foto do Estabelecimento"
+        style="
+          max-width: 150px;
+          border-radius: 8px;
+          margin-top: 8px;
+          align-self: center;
+        "
+      />
+    </small>
+  </div>
+  <nav class="menu-lateral">
+    <ul>
+      <li (click)="irParaInicio()">🏠 Início</li>
+      <li (click)="irParaEdicao()">✏️ Editar Empresa</li>
+      <li (click)="irParaGraficos()">📊 Gráficos</li>
+      <li (click)="irParaPosts()">📰 Postagens</li>
+    </ul>
+  </nav>
+</div>

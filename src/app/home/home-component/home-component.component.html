@@ -1,0 +1,52 @@
+<div class="home-container">
+  <main class="home-content">
+    <app-localizacao></app-localizacao>
+
+    <section *ngIf="abaAtiva === 'explorar'" class="explorar">
+      <div class="titulo-explorar">
+        <h1>O que vamos descobrir?</h1>
+        <p>Encontre lugares especiais perto de você.</p>
+      </div>
+    </section>
+
+    <app-empresa-lista
+      [mostrarCampoCategoria]="abaAtiva === 'explorar'"
+      [mostrarResultados]="
+        abaAtiva !== 'explorar' || categoriaExplorarSelecionada
+      "
+      (categoriaEscolhida)="categoriaExplorarSelecionada = true"
+    ></app-empresa-lista>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Navegação principal">
+    <button
+      type="button"
+      class="nav-item"
+      [class.ativo]="abaAtiva === 'inicio'"
+      (click)="selecionarAba('inicio')"
+    >
+      <span class="material-icons">home</span>
+      <span>Início</span>
+    </button>
+
+    <button
+      type="button"
+      class="nav-item"
+      [class.ativo]="abaAtiva === 'explorar'"
+      (click)="selecionarAba('explorar')"
+    >
+      <span class="material-icons">explore</span>
+      <span>Explorar</span>
+    </button>
+
+    <!-- <button
+      type="button"
+      class="nav-item"
+      [class.ativo]="abaAtiva === 'filtros'"
+      (click)="selecionarAba('filtros')"
+    >
+      <span class="material-icons">tune</span>
+      <span>Filtros</span>
+    </button> -->
+  </nav>
+</div>

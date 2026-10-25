@@ -1,0 +1,51 @@
+<!-- src/app/admin-post-form/admin-post-form.component.html -->
+<div>
+  <h2>Criar Novo Post</h2>
+  <form (ngSubmit)="criarPost()">
+    <div>
+      <label for="imagem">Imagem (JPEG/PNG):</label>
+      <input
+        type="file"
+        id="imagem"
+        (change)="onImagemSelecionada($event)"
+        accept=".jpg,.jpeg,.png"
+      />
+      <img
+        *ngIf="imagemPreview"
+        [src]="imagemPreview"
+        alt="Preview"
+        style="max-width: 200px"
+      />
+    </div>
+    <div>
+      <label for="placeId">Place ID:</label>
+      <input
+        type="text"
+        id="placeId"
+        [(ngModel)]="placeId"
+        name="placeId"
+        required
+      />
+    </div>
+    <div>
+      <label for="conteudo">Conteúdo:</label>
+      <textarea
+        id="conteudo"
+        [(ngModel)]="conteudo"
+        name="conteudo"
+        required
+      ></textarea>
+    </div>
+    <div>
+      <label for="expiresAt">Data de Expiração:</label>
+      <input
+        type="datetime-local"
+        id="expiresAt"
+        [(ngModel)]="expiresAt"
+        name="expiresAt"
+        required
+      />
+    </div>
+    <button type="submit">Criar Post</button>
+  </form>
+</div>

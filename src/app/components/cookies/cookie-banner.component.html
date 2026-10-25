@@ -1,0 +1,11 @@
+<div *ngIf="showBanner" class="cookie-banner">
+  <p>
+    Utilizamos cookies para melhorar sua experiência. Ao continuar, você
+    concorda com nossa
+
+    <a (click)="irParaPolitica()" class="link-text">Política de Privacidade</a>
+  </p>
+  <button (click)="recusarCookies()">Recusar</button>
+
+  <button (click)="aceitarCookies()">Aceitar</button>
+</div>

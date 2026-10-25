@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>Escolha o tipo de cadastro</h2>
+  <div class="cards">
+    <div class="card" (click)="navegarParaPessoaFisica()">
+      <h3>Pessoa Física</h3>
+      <img src="assets/pf.png" alt="Pessoa Fisica" />
+      <p>Utilize este cadastro se você é usuário do sistema.</p>
+    </div>
+
+    <div class="card" (click)="navegarParaPessoaJuridica()">
+      <h3>Pessoa Jurídica</h3>
+      <img src="assets/pj.png" alt="Pessoa Jurídica" />
+      <p>
+        Este cadastro é destinado às pessoas que gerenciam as empresas aqui
+        cadastradas.
+      </p>
+    </div>
+  </div>
+</div>

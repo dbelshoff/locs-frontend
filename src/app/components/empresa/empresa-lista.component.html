@@ -1,0 +1,242 @@
+<div class="empresa-lista-container">
+  <div class="categoria" *ngIf="mostrarCampoCategoria">
+    <div class="categoria-pesquisa">
+      <span class="material-icons icone-pesquisa" aria-hidden="true"
+        >search</span
+      >
+
+      <div class="categoria-input-wrapper">
+        <app-categoria
+          (categoriaSelecionada)="carregarEmpresasPorCategoria($event)"
+          (textoAlterado)="textoPesquisa = $event"
+        ></app-categoria>
+      </div>
+
+      <button
+        type="button"
+        class="btn-buscar-icone"
+        aria-label="Buscar categoria"
+        (click)="buscarCategoria()"
+      >
+        <span class="material-icons" aria-hidden="true">arrow_forward</span>
+      </button>
+    </div>
+
+    <button
+      *ngIf="textoPesquisa.trim()"
+      type="button"
+      class="btn-limpar-icone"
+      aria-label="Limpar pesquisa"
+      (click)="limparCategoria()"
+    >
+      <span class="material-icons" aria-hidden="true">close</span>
+    </button>
+  </div>
+
+  <div class="categorias-atalhos" *ngIf="mostrarCampoCategoria">
+    <button
+      type="button"
+      (click)="carregarEmpresasPorCategoria('restaurantes')"
+    >
+      <span class="material-icons">restaurant</span>
+      <span>Restaurantes</span>
+    </button>
+
+    <button
+      type="button"
+      (click)="carregarEmpresasPorCategoria('pontos turísticos')"
+    >
+      <span class="material-icons">landscape</span>
+      <span>Turismo</span>
+    </button>
+
+    <button type="button" (click)="carregarEmpresasPorCategoria('cafés')">
+      <span class="material-icons">coffee</span>
+      <span>Cafés</span>
+    </button>
+
+    <button type="button" (click)="carregarEmpresasPorCategoria('lojas')">
+      <span class="material-icons">shopping_bag</span>
+      <span>Lojas</span>
+    </button>
+  </div>
+
+  <!-- Carregamento -->
+  <div
+    *ngIf="isLoading && mostrarResultados"
+    class="loading"
+    role="status"
+    aria-live="polite"
+  >
+    <div class="spinner"></div>
+    <span>Buscando empresas próximas...</span>
+  </div>
+
+  <!-- Localização inválida -->
+  <div
+    *ngIf="!selectLocalizacao && !isLoading && mostrarResultados"
+    class="error"
+  >
+    <div class="estado-vazio-icone">
+      <span class="material-icons">location_on</span>
+    </div>
+
+    <h2>Precisamos da sua localização</h2>
+
+    <p>
+      Informe sua região para encontrar empresas, lojas e serviços próximos de
+      você.
+    </p>
+  </div>
+
+  <!-- Resultados -->
+  <div
+    *ngIf="selectLocalizacao && !isLoading && mostrarResultados"
+    class="content"
+  >
+    <!-- Cabeçalho com resultados -->
+    <!-- <h2 class="titulo-resultados" *ngIf="empresasExatas.length > 0">
+      Empresas
+      <span *ngIf="categoriaSelecionada"> de {{ categoriaSelecionada }} </span>
+      em
+      {{
+        (bairro ? bairro + ", " : "") + (cidade ? cidade + "/" : "") + estado
+      }}
+    </h2> -->
+
+    <div class="cabecalho-resultados" *ngIf="empresasExatas.length > 0">
+      <div class="resultados-icone">
+        <span class="material-icons">explore</span>
+      </div>
+
+      <div class="resultados-texto">
+        <h2>Descubra por perto</h2>
+
+        <p *ngIf="categoriaSelecionada">
+          Resultados para
+          <strong>{{ categoriaSelecionada }}</strong>
+        </p>
+
+        <p>
+          <span class="material-icons">place</span>
+          {{
+            (bairro ? bairro + ", " : "") +
+              (cidade ? cidade + "/" : "") +
+              estado
+          }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Estado vazio aprimorado -->
+    <section
+      *ngIf="empresasExatas.length === 0 && empresasProximas.length === 0"
+      class="estado-vazio"
+      aria-live="polite"
+    >
+      <div class="estado-vazio-icone">
+        <span class="material-icons">search_off</span>
+      </div>
+
+      <h2>Não encontramos resultados</h2>
+
+      <p class="estado-vazio-descricao">
+        Não encontramos empresas
+        <ng-container *ngIf="categoriaSelecionada">
+          para
+          <strong>“{{ categoriaSelecionada }}”</strong>
+        </ng-container>
+        nesta região.
+      </p>
+
+      <div class="estado-vazio-dicas">
+        <div class="dica-item">
+          <span class="material-icons">search</span>
+          <div>
+            <strong>Tente outro termo</strong>
+            <p>
+              Experimente uma palavra diferente ou uma categoria mais geral.
+            </p>
+          </div>
+        </div>
+
+        <div class="dica-item">
+          <span class="material-icons">location_on</span>
+          <div>
+            <strong>Explore outras regiões</strong>
+            <p>
+              Altere sua localização para procurar empresas em outros bairros ou
+              cidades.
+            </p>
+          </div>
+        </div>
+
+        <div class="dica-item">
+          <span class="material-icons">storefront</span>
+          <div>
+            <strong>Descubra outras categorias</strong>
+            <p>Explore lojas, restaurantes, cafés e outros estabelecimentos.</p>
+          </div>
+        </div>
+      </div>
+
+      <button
+        *ngIf="categoriaSelecionada || textoPesquisa.trim()"
+        type="button"
+        class="btn-custom btn-limpar-pesquisa"
+        (click)="limparCategoria()"
+      >
+        <span class="material-icons">restart_alt</span>
+        Limpar pesquisa
+      </button>
+
+      <p class="estado-vazio-local">
+        <span class="material-icons">place</span>
+        {{
+          (bairro ? bairro + ", " : "") + (cidade ? cidade + "/" : "") + estado
+        }}
+      </p>
+    </section>
+
+    <!-- Empresas da região selecionada -->
+    <div class="lista-empresas">
+      <app-empresa-card
+        *ngFor="let empresa of empresasExatas"
+        [empresa]="empresa"
+      ></app-empresa-card>
+    </div>
+
+    <!-- Outras empresas próximas -->
+    <!-- <div *ngIf="empresasProximas.length > 0" class="outras-empresas">
+      <h2>
+        {{
+          categoriaSelecionada
+            ? categoriaSelecionada + " em outros locais próximos"
+            : "Empresas próximas"
+        }}
+      </h2> -->
+
+    <!-- Outras empresas próximas -->
+    <div *ngIf="empresasProximas.length > 0" class="outras-empresas">
+      <div class="titulo-outras-empresas">
+        <div class="titulo-outras-icone">
+          <span class="material-icons">explore</span>
+        </div>
+
+        <div class="titulo-outras-texto">
+          <h2>
+            {{ categoriaSelecionada || "Empresas próximas" }}
+          </h2>
+          <p>Em outras regiões próximas</p>
+        </div>
+      </div>
+
+      <div class="lista-empresas">
+        <app-empresa-card
+          *ngFor="let empresa of empresasProximas"
+          [empresa]="empresa"
+        ></app-empresa-card>
+      </div>
+    </div>
+  </div>
+</div>

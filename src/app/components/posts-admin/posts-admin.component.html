@@ -1,0 +1,9 @@
+<div class="posts-admin-container">
+  <h2>Gerenciar Postagens para sua Empresa</h2>
+  <div *ngIf="isLoading">Carregando...</div>
+  <div *ngIf="erro" class="erro">{{ erro }}</div>
+  <app-admin-post-form
+    *ngIf="placeId"
+    [placeId]="placeId"
+  ></app-admin-post-form>
+</div>

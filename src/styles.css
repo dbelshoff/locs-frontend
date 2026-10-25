@@ -1,0 +1,54 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+
+/* html, body {
+  height: 100%;
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+} */
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+.html, body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari e Opera */
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Impede rolagem horizontal */
+  overscroll-behavior: none; /* Impede o efeito de "puxar" a tela */
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box; /* Garante que padding/margens não aumentem a largura */
+}
+
+.content {
+  flex: 1;
+  padding-top: 64px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.story-dialog .mat-dialog-container {
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.story-backdrop {
+  background: black;
+}
+

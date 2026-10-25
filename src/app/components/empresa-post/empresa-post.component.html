@@ -1,0 +1,72 @@
+<!--
+<div class="story-container" *ngIf="posts.length > 0">
+  <div
+    class="story-slide"
+    *ngFor="let post of posts; let i = index"
+    [hidden]="i !== currentIndex"
+  >
+    <div class="story-image-container">
+      <img
+        *ngIf="post.imagemUrl"
+        [src]="getImagemUrl(post.imagemUrl)"
+        alt="Imagem do post"
+        class="story-image"
+        (error)="handleImageError($event)"
+      />
+      <div class="story-content">
+        <h3>{{ post.conteudo }}</h3>
+        <p class="story-expiration">
+          Expira em: {{ post.expiresAt | date : "dd/MM/yyyy HH:mm" }}
+        </p>
+      </div>
+    </div>
+    <div
+      class="navigation-left"
+      (click)="prevSlide()"
+      *ngIf="currentIndex > 0"
+    ></div>
+    <div
+      class="navigation-right"
+      (click)="nextSlide()"
+      *ngIf="currentIndex < posts.length - 1"
+    ></div>
+  </div>
+  <button class="close-button" (click)="fechar()">✕</button>
+</div>
+<div class="no-posts" *ngIf="posts.length === 0">Nenhum post encontrado.</div> -->
+
+<div class="story-container" *ngIf="posts.length > 0">
+  <div
+    class="story-slide"
+    *ngFor="let post of posts; let i = index"
+    [hidden]="i !== currentIndex"
+  >
+    <img
+      *ngIf="post.imagemUrl"
+      [src]="getImagemUrl(post.imagemUrl)"
+      alt="Imagem do post"
+      class="story-image"
+      (error)="handleImageError($event)"
+    />
+
+    <!-- BARRA DE PROGRESSO -->
+    <div class="progress-bar-container">
+      <div class="progress-bar" [style.width]="progress + '%'"></div>
+    </div>
+
+    <!-- CONTEÚDO SOBRE A IMAGEM -->
+    <div class="story-content">
+      <h3>{{ post.conteudo }}</h3>
+      <p class="story-expiration">
+        Expira em: {{ post.expiresAt | date : "dd/MM/yyyy HH:mm" }}
+      </p>
+    </div>
+
+    <!-- ÁREAS DE NAVEGAÇÃO -->
+    <div class="navigation-left" (click)="prevSlide()"></div>
+    <div class="navigation-right" (click)="nextSlide()"></div>
+  </div>
+
+  <button class="close-button" (click)="fechar()">✕</button>
+</div>
+<div class="no-posts" *ngIf="posts.length === 0"></div>

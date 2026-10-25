@@ -1,0 +1,16 @@
+.dashboard-layout {
+  display: flex;
+  height: 100vh;
+}
+
+app-menu {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+}
