@@ -1,59 +1,114 @@
-.localizacao {
-  padding: 0;
+:host {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
+
+/* =========================================
+   LOCALIZAÇÃO
+========================================= */
+
+.localizacao {
+  width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================================
+   INFORMAÇÕES DA LOCALIZAÇÃO
+========================================= */
 
 .localizacao-info {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+
   padding: 0.5rem;
-  color: #2e7d32;
+
+  color: var(--locs-text-secondary, #76584A);
   font-weight: 500;
   font-size: 12px;
 }
+
+/* =========================================
+   CABEÇALHO DA LOCALIZAÇÃO
+========================================= */
 
 .localizacao-header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 1rem;
-  width: 100%;
   justify-content: space-between;
-  padding: 0.5rem;
-  background-color: #e6ffe6;
-  border-radius: 6px;
+  gap: 1rem;
+
+  width: 100%;
+  padding: 0.75rem 0.85rem;
+
+  background-color: var(--locs-surface-soft, #F5EDE4);
+  border: 1px solid var(--locs-border, #E8DDD2);
+  border-radius: var(--locs-radius-md, 12px);
+
+  box-sizing: border-box;
 }
 
 .localizacao-header span {
   flex: 1;
+  min-width: 0;
   text-align: left;
+  color: var(--locs-text, #39312E);
 }
 
+/* Botão de alterar localização */
+
 .localizacao-header button {
-  background-color: #007bff;
-  color: white;
+  flex-shrink: 0;
+
+  background-color: var(--locs-primary, #B85C43);
+  color: #FFFFFF;
+
   border: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--locs-radius-sm, 8px);
+
   cursor: pointer;
-  transition: background-color 0.2s;
+
+  transition:
+    background-color var(--locs-transition, 180ms ease),
+    box-shadow var(--locs-transition, 180ms ease);
+
   font-size: 12px;
+  font-weight: 600;
 }
 
 .localizacao-header button:hover {
-  background-color: #0051a9;
+  background-color: var(--locs-primary-hover, #9F4B35);
 }
+
+.localizacao-header button:active {
+  background-color: var(--locs-primary-active, #883F2D);
+}
+
+/* =========================================
+   FORMULÁRIO DE LOCALIZAÇÃO
+========================================= */
 
 .form-localizacao {
   display: flex;
   flex-direction: column;
   gap: 10px;
+
   width: 100%;
   padding: 1rem;
-  background-color: #e6ffe6;
-  border: 1px solid #a5d6a7;
-  border-radius: 8px;
+
+  background-color: var(--locs-surface, #FFFFFF);
+  border: 1px solid var(--locs-border, #E8DDD2);
+  border-radius: var(--locs-radius-lg, 16px);
+
+  box-shadow: var(--locs-shadow-sm, 0 2px 8px rgba(57, 49, 46, 0.05));
+
+  box-sizing: border-box;
 }
 
 .form-group {
@@ -61,51 +116,98 @@
   width: 100%;
 }
 
+/* =========================================
+   CAMPOS DO FORMULÁRIO
+========================================= */
+
 .form-localizacao select,
 .form-localizacao input[type="text"] {
   width: 100%;
+  min-height: 44px;
+
   padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+
+  background: #FFFFFF;
+  color: var(--locs-text, #39312E);
+
+  border-radius: var(--locs-radius-sm, 8px);
+  border: 1px solid var(--locs-border-strong, #D8C6B7);
+
+  font-family: inherit;
   font-size: 15px;
-  transition: border-color 0.3s ease;
+
+  transition:
+    border-color var(--locs-transition, 180ms ease),
+    box-shadow var(--locs-transition, 180ms ease);
+
   box-sizing: border-box;
 }
 
 .form-localizacao input[type="text"]::placeholder {
-  color: #999;
-  font-style: italic;
+  color: var(--locs-text-muted, #8B817A);
+  font-style: normal;
 }
+
+/* Labels */
 
 .form-localizacao label {
   display: block;
-  font-weight: bold;
+
+  font-weight: 600;
+  font-size: 13px;
+
   margin-bottom: 8px;
-  color: #333;
+
+  color: var(--locs-text-secondary, #76584A);
 }
+
+/* Foco nos campos */
 
 .form-localizacao select:focus,
 .form-localizacao input[type="text"]:focus {
-  border-color: #007BFF;
+  border-color: var(--locs-primary, #B85C43);
   outline: none;
-  box-shadow: 0 0 4px rgba(63, 81, 181, 0.4);
+
+  box-shadow: 0 0 0 3px rgba(184, 92, 67, 0.12);
 }
 
+/* =========================================
+   BOTÃO DO FORMULÁRIO
+========================================= */
+
 .form-localizacao button {
-  background-color: #007bff;
-  color: white;
+  background-color: var(--locs-primary, #B85C43);
+  color: #FFFFFF;
+
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  padding: 0.65rem 1rem;
+
+  border-radius: var(--locs-radius-sm, 8px);
+
   cursor: pointer;
-  transition: background-color 0.2s;
+
+  transition:
+    background-color var(--locs-transition, 180ms ease),
+    box-shadow var(--locs-transition, 180ms ease);
+
   margin-top: 1rem;
   align-self: center;
+
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .form-localizacao button:hover {
-  background-color: #0051a9;
+  background-color: var(--locs-primary-hover, #9F4B35);
 }
+
+.form-localizacao button:active {
+  background-color: var(--locs-primary-active, #883F2D);
+}
+
+/* =========================================
+   AUTOCOMPLETE
+========================================= */
 
 .autocomplete {
   position: relative;
@@ -116,61 +218,91 @@
   top: 100%;
   left: 0;
   right: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+
+  background-color: var(--locs-surface, #FFFFFF);
+
+  border: 1px solid var(--locs-border, #E8DDD2);
+  border-radius: var(--locs-radius-md, 12px);
+
   max-height: 200px;
   overflow-y: auto;
+
   z-index: 1000;
+
   list-style: none;
-  padding: 0;
-  margin: 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 4px;
+  margin: 4px 0 0;
+
+  box-shadow: var(--locs-shadow-md, 0 5px 18px rgba(57, 49, 46, 0.08));
 }
 
 .suggestions li {
   padding: 10px 12px;
+
   cursor: pointer;
-  transition: background-color 0.2s;
-  color: #000000;
-  font-size: 16px;
+
+  transition: background-color var(--locs-transition, 180ms ease);
+
+  color: var(--locs-text, #39312E);
+  font-size: 14px;
+
+  border-radius: var(--locs-radius-sm, 8px);
 }
 
 .suggestions li:hover,
 .suggestions li.selected {
-  background-color: #e6f3ff;
-
+  background-color: var(--locs-primary-soft, #F4E5DE);
+  color: var(--locs-primary-hover, #9F4B35);
 }
+
+/* =========================================
+   STATUS DA LOCALIZAÇÃO
+========================================= */
+
 .localizacao-status {
   display: flex;
   align-items: flex-start;
   gap: 12px;
+
   width: 100%;
   box-sizing: border-box;
+
   margin-top: 12px;
   padding: 18px;
-  border: 1px solid #e1e8f2;
-  border-radius: 12px;
-  background: #ffffff;
-  color: #172b4d;
+
+  border: 1px solid var(--locs-border, #E8DDD2);
+  border-radius: var(--locs-radius-md, 12px);
+
+  background: var(--locs-surface, #FFFFFF);
+  color: var(--locs-text, #39312E);
+
   text-align: left;
+
+  box-shadow: var(--locs-shadow-sm, 0 2px 8px rgba(57, 49, 46, 0.05));
 }
+
+/* Ícone do status */
 
 .status-icone {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+
   width: 42px;
   height: 42px;
+
   border-radius: 50%;
-  background: #e8f0ff;
-  color: #2563eb;
+
+  background: var(--locs-primary-soft, #F4E5DE);
+  color: var(--locs-primary, #B85C43);
 }
 
 .status-icone .material-icons {
   font-size: 24px;
 }
+
+/* Conteúdo do status */
 
 .status-conteudo {
   flex: 1;
@@ -179,29 +311,41 @@
 
 .status-conteudo strong {
   display: block;
+
   font-size: 14px;
-  color: #172b4d;
+  color: var(--locs-text, #39312E);
 }
 
 .status-conteudo p {
   margin: 5px 0 12px;
-  color: #64748b;
+
+  color: var(--locs-text-muted, #8B817A);
+
   font-size: 12px;
   line-height: 1.5;
 }
 
+/* =========================================
+   BARRA DE PROGRESSO
+========================================= */
+
 .status-progresso {
   height: 5px;
   overflow: hidden;
+
   border-radius: 10px;
-  background: #e8edf5;
+
+  background: var(--locs-sand-light, #F0E5D8);
 }
 
 .status-progresso-barra {
   width: 40%;
   height: 100%;
+
   border-radius: inherit;
-  background: #2563eb;
+
+  background: var(--locs-primary, #B85C43);
+
   animation: progresso-indeterminado 1.5s ease-in-out infinite;
 }
 
@@ -215,16 +359,23 @@
   }
 }
 
+/* =========================================
+   ERRO DE LOCALIZAÇÃO
+========================================= */
+
 .localizacao-erro {
   display: flex;
   align-items: center;
   gap: 10px;
+
   margin-top: 12px;
   padding: 14px;
-  border: 1px solid #fecaca;
-  border-radius: 10px;
-  background: #fff7f7;
-  color: #991b1b;
+
+  border: 1px solid #EBC5BF;
+  border-radius: var(--locs-radius-md, 12px);
+
+  background: var(--locs-error-soft, #F9E6E3);
+  color: var(--locs-error, #B84036);
 }
 
 .localizacao-erro > .material-icons {
@@ -233,6 +384,7 @@
 
 .localizacao-erro div {
   flex: 1;
+  min-width: 0;
 }
 
 .localizacao-erro strong {
@@ -241,29 +393,44 @@
 
 .localizacao-erro p {
   margin: 4px 0 0;
+
   font-size: 12px;
   line-height: 1.4;
 }
 
+/* Botão para tentar novamente */
+
 .localizacao-erro button {
   flex-shrink: 0;
+
   margin: 0;
   padding: 8px 12px;
+
   border: 0;
-  border-radius: 6px;
-  background: #007bff;
-  color: #fff;
+  border-radius: var(--locs-radius-sm, 8px);
+
+  background: var(--locs-primary, #B85C43);
+  color: #FFFFFF;
+
   font-size: 12px;
-}
+  font-weight: 600;
 
-
-.localizacao-erro button {
   cursor: pointer;
-  transition: background-color 0.2s ease;
+
+  transition: background-color var(--locs-transition, 180ms ease);
 }
 
 .localizacao-erro button:hover {
-  background: #0051a9;
+  background: var(--locs-primary-hover, #9F4B35);
+}
+
+/* =========================================
+   ACESSIBILIDADE
+========================================= */
+
+.localizacao button:focus-visible {
+  outline: 3px solid var(--locs-sand, #E9D5C2);
+  outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -271,5 +438,45 @@
     animation: none;
     width: 100%;
   }
+
+  .localizacao button,
+  .suggestions li,
+  .form-localizacao select,
+  .form-localizacao input[type="text"] {
+    transition: none;
+  }
 }
 
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 480px) {
+  .localizacao-header {
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+  .localizacao-header button {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .form-localizacao {
+    padding: 14px 12px;
+  }
+
+  .localizacao-status {
+    padding: 14px 12px;
+  }
+
+  .localizacao-erro {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .localizacao-erro button {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+}

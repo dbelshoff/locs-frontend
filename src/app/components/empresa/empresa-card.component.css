@@ -1,6 +1,11 @@
 
 /* =========================================
-   WRAPPER DO CARD E ANEL ANIMADO
+   LOCS — CARD DE EMPRESA
+   Identidade: Terracota + Areia
+========================================= */
+
+/* =========================================
+   WRAPPER E ANEL ANIMADO DOS STORIES
 ========================================= */
 
 .empresa-card-wrapper {
@@ -17,12 +22,13 @@
 
 .empresa-card-wrapper.tem-stories {
   background: conic-gradient(
-    #f4b400,
-    #ff3f3f,
-    #ff4da6,
-    #c633ff,
-    #4cafff,
-    #f4b400
+    #B85C43,
+    #D99462,
+    #E9B96E,
+    #B85C43,
+    #76584A,
+    #D99462,
+    #B85C43
   );
   animation: girar 3s linear infinite;
 }
@@ -39,7 +45,7 @@
 
 .empresa-card-wrapper.tem-stories .empresa-card {
   border-radius: 12px;
-  background: #fff;
+  background: #FFFFFF;
   padding: 2px;
 }
 
@@ -54,20 +60,27 @@
   height: 100%;
   min-width: 0;
   box-sizing: border-box;
-  background: #fff;
+
+  background: var(--locs-surface, #FFFFFF);
+  border: 1px solid var(--locs-border, #E8DDD2);
   border-radius: 12px;
-  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.08);
+  box-shadow: var(--locs-shadow-sm, 0 2px 8px rgba(57, 49, 46, 0.05));
+
   overflow: hidden;
   cursor: pointer;
-  transition: box-shadow 0.2s ease;
+
+  transition:
+    box-shadow 180ms ease,
+    border-color 180ms ease;
 }
 
 .empresa-card:hover {
-  box-shadow: 0 7px 20px rgba(15, 23, 42, 0.12);
+  border-color: var(--locs-border-strong, #D8C6B7);
+  box-shadow: var(--locs-shadow-md, 0 5px 18px rgba(57, 49, 46, 0.08));
 }
 
 /* =========================================
-   IMAGENS PADRONIZADAS
+   IMAGENS
 ========================================= */
 
 .imagem-container {
@@ -75,7 +88,7 @@
   height: 150px;
   flex: 0 0 150px;
   overflow: hidden;
-  background: #eef2f7;
+  background: var(--locs-surface-soft, #F5EDE4);
 }
 
 .empresa-imagem {
@@ -90,11 +103,13 @@
   width: 100%;
   height: 150px;
   flex: 0 0 150px;
-  background: #eef2f7;
+
+  background: var(--locs-surface-soft, #F5EDE4);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #64748b;
+
+  color: var(--locs-text-secondary, #76584A);
   font-style: italic;
 }
 
@@ -112,17 +127,21 @@
 }
 
 /* Nome com espaço para até duas linhas */
+
 .nome {
   font-size: 15px;
   line-height: 1.35;
-  font-weight: 600;
-  color: #172b4d;
+  font-weight: 700;
+  color: var(--locs-text, #39312E);
+
   margin: 0 0 6px;
   min-height: 2.7em;
+
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   line-clamp: 2;
+
   overflow: hidden;
   overflow-wrap: anywhere;
 }
@@ -140,14 +159,14 @@
 }
 
 .estrela {
-  color: #f4b400;
+  color: #D99A32;
   font-size: 1rem;
   white-space: nowrap;
 }
 
 .rating-valor {
   margin-left: 5px;
-  color: #64748b;
+  color: var(--locs-text-secondary, #76584A);
   font-size: 0.8rem;
 }
 
@@ -165,12 +184,16 @@
 }
 
 .tag {
-  background: #e8edf3;
+  background: var(--locs-surface-soft, #F5EDE4);
+  border: 1px solid var(--locs-border, #E8DDD2);
   border-radius: 14px;
+
   padding: 4px 8px;
+
   font-size: 0.72rem;
   line-height: 1.2;
-  color: #334155;
+  color: var(--locs-text-secondary, #76584A);
+
   overflow-wrap: anywhere;
 }
 
@@ -182,9 +205,11 @@
   display: flex;
   align-items: flex-start;
   min-width: 0;
-  color: #475569;
+
+  color: var(--locs-text-secondary, #76584A);
   font-size: 0.78rem;
   line-height: 1.4;
+
   margin-bottom: 6px;
   overflow-wrap: anywhere;
   word-break: break-word;
@@ -192,6 +217,7 @@
 
 .endereco .material-icons {
   flex: 0 0 auto;
+  color: var(--locs-primary, #B85C43);
 }
 
 /* =========================================
@@ -207,15 +233,17 @@
   display: flex;
   align-items: center;
   min-width: 0;
-  color: #087cff;
+
+  color: var(--locs-primary, #B85C43);
   text-decoration: none;
   font-size: 0.85rem;
+
   overflow-wrap: anywhere;
 }
 
 .telefone:hover {
-  text-decoration: none;
-  color: #334155;
+  text-decoration: underline;
+  color: var(--locs-primary-hover, #9F4B35);
 }
 
 /* =========================================
@@ -226,10 +254,13 @@
   display: flex;
   align-items: center;
   gap: 4px;
+
   margin: 0 0 8px;
-  color: #2563eb;
+
+  color: var(--locs-primary-hover, #9F4B35);
   font-size: 0.8rem;
   font-weight: 600;
+
   overflow-wrap: anywhere;
 }
 
@@ -237,6 +268,7 @@
   flex: 0 0 auto;
   font-size: 1rem;
   margin-right: 0;
+  color: var(--locs-primary, #B85C43);
 }
 
 /* =========================================
@@ -248,6 +280,7 @@
   flex-direction: column;
   align-items: stretch;
   gap: 8px;
+
   margin-top: auto;
   padding-top: 8px;
   min-width: 0;
@@ -265,8 +298,8 @@
   height: auto;
   padding: 9px 8px;
 
-  border: none;
-  border-radius: 8px;
+  border: 1px solid transparent;
+  border-radius: 9px;
   box-sizing: border-box;
 
   font-family: inherit;
@@ -274,12 +307,18 @@
   font-weight: 600;
   line-height: 1.25;
   text-align: center;
+
   white-space: normal;
   overflow-wrap: anywhere;
   word-break: normal;
 
   cursor: pointer;
-  transition: background 0.2s;
+
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
 .btn .material-icons {
@@ -289,22 +328,42 @@
   line-height: 1;
 }
 
+/* Google Maps */
+
 .btn.maps {
-  background: #2196f3;
-  color: #fff;
+  background: var(--locs-primary, #B85C43);
+  border-color: var(--locs-primary, #B85C43);
+  color: #FFFFFF;
 }
 
 .btn.maps:hover {
-  background: #1976d2;
+  background: var(--locs-primary-hover, #9F4B35);
+  border-color: var(--locs-primary-hover, #9F4B35);
+  box-shadow: var(--locs-shadow-sm);
 }
 
+/* Mostrar contato */
+
 .btn.contato {
-  background: #4caf50;
-  color: #fff;
+  background: var(--locs-primary-soft, #F4E5DE);
+  border-color: var(--locs-border, #E8DDD2);
+  color: var(--locs-primary-hover, #9F4B35);
 }
 
 .btn.contato:hover {
-  background: #388e3c;
+  background: var(--locs-sand-light, #F0E5D8);
+  border-color: var(--locs-border-strong, #D8C6B7);
+}
+
+/* Acessibilidade dos botões */
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--locs-sand, #E9D5C2);
+  outline-offset: 2px;
 }
 
 /* =========================================
@@ -352,6 +411,7 @@
   }
 
   /* Botões empilhados para facilitar o toque */
+
   .botoes {
     display: flex;
     flex-direction: column;
@@ -426,8 +486,8 @@
     animation: none;
   }
 
-  .empresa-card,
   .empresa-card-wrapper,
+  .empresa-card,
   .btn {
     transition: none;
   }

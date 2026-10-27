@@ -1,34 +1,46 @@
-<mat-toolbar color="primary">
-  <!-- Botão Home -->
+<mat-toolbar class="locs-toolbar">
+  <!-- Marca e acesso à página inicial -->
   <button
-    (click)="toHome()"
     mat-icon-button
-    class="example-icon"
-    aria-label="Botão para página inicial"
+    class="brand-mark"
+    (click)="toHome()"
+    aria-label="Ir para a página inicial"
   >
-    <mat-icon>home</mat-icon>
+    <mat-icon>travel_explore</mat-icon>
   </button>
 
-  <!-- Título -->
-  <span>LOCS</span>
+  <button
+    type="button"
+    class="brand-copy"
+    (click)="toHome()"
+    aria-label="LOCS - página inicial"
+  >
+    <span class="brand-name">LOCS</span>
+    <span class="brand-tagline">Descubra o que está perto.</span>
+  </button>
+
   <span class="spacer"></span>
 
-  <!-- Botão do menu hamburguer (sempre visível) -->
+  <!-- Menu do usuário -->
   <!-- <button
     mat-icon-button
-    (click)="toggleSidenav()"
-    aria-label="Abrir menu"
     class="hamburger-button"
-    disabled
+    (click)="toggleSidenav()"
+    aria-label="Abrir menu de navegação"
   >
     <mat-icon>menu</mat-icon>
   </button> -->
 </mat-toolbar>
 
-<!-- Sidenav para o menu hamburguer -->
-<mat-sidenav-container>
-  <mat-sidenav #sidenav mode="over" position="end">
+<!-- Menu lateral -->
+<mat-sidenav-container class="locs-sidenav-container">
+  <mat-sidenav #sidenav mode="over" position="end" class="locs-sidenav">
     <div class="sidenav-header">
+      <div class="sidenav-heading">
+        <span class="sidenav-title">Menu</span>
+        <span class="sidenav-subtitle">Sua conta LOCS</span>
+      </div>
+
       <button
         mat-icon-button
         (click)="sidenav.close()"
@@ -37,28 +49,50 @@
         <mat-icon>close</mat-icon>
       </button>
     </div>
-    <mat-nav-list>
-      <!-- Conteúdo para usuário logado -->
-      <div *ngIf="authService.isLoggedIn()">
-        <p *ngIf="cliente" class="sidenav-user">Olá, {{ cliente.nome }}</p>
-        <a mat-list-item (click)="irParaPerfil(); sidenav.close()">Perfil</a>
-        <a mat-list-item (click)="irParaCarteira(); sidenav.close()"
-          >Carteira</a
-        >
-        <a mat-list-item (click)="irParaDashboard(); sidenav.close()"
-          >Dashboard</a
-        >
-        <a mat-list-item (click)="sair(); sidenav.close()">Sair</a>
-      </div>
 
-      <!-- Conteúdo para usuário não logado -->
-      <div *ngIf="!authService.isLoggedIn()">
-        <a mat-list-item (click)="irParaCadastro(); sidenav.close()"
-          >Cadastre-se</a
-        >
-        <a mat-list-item (click)="irParaLogin(); sidenav.close()">Entrar</a>
-      </div>
+    <mat-nav-list>
+      <!-- Usuário autenticado -->
+      <ng-container *ngIf="authService.isLoggedIn(); else visitante">
+        <div class="sidenav-user" *ngIf="cliente">
+          <span class="user-greeting">Olá,</span>
+          <strong>{{ cliente.nome }}</strong>
+        </div>
+
+        <a mat-list-item (click)="irParaPerfil(); sidenav.close()">
+          <mat-icon matListItemIcon>person</mat-icon>
+          <span matListItemTitle>Meu perfil</span>
+        </a>
+
+        <a mat-list-item (click)="irParaCarteira(); sidenav.close()">
+          <mat-icon matListItemIcon>account_balance_wallet</mat-icon>
+          <span matListItemTitle>Carteira</span>
+        </a>
+
+        <a mat-list-item (click)="irParaDashboard(); sidenav.close()">
+          <mat-icon matListItemIcon>storefront</mat-icon>
+          <span matListItemTitle>Painel da empresa</span>
+        </a>
+
+        <a mat-list-item (click)="sair(); sidenav.close()">
+          <mat-icon matListItemIcon>logout</mat-icon>
+          <span matListItemTitle>Sair</span>
+        </a>
+      </ng-container>
+
+      <!-- Visitante -->
+      <ng-template #visitante>
+        <a mat-list-item (click)="irParaCadastro(); sidenav.close()">
+          <mat-icon matListItemIcon>person_add</mat-icon>
+          <span matListItemTitle>Criar conta</span>
+        </a>
+
+        <a mat-list-item (click)="irParaLogin(); sidenav.close()">
+          <mat-icon matListItemIcon>login</mat-icon>
+          <span matListItemTitle>Entrar</span>
+        </a>
+      </ng-template>
     </mat-nav-list>
   </mat-sidenav>
+
   <mat-sidenav-content></mat-sidenav-content>
 </mat-sidenav-container>

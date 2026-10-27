@@ -1,86 +1,380 @@
-mat-toolbar {
+
+/* =========================================
+   TOOLBAR LOCS
+========================================= */
+
+.locs-toolbar {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
   z-index: 1000;
-  height: 64px;
+
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background-color: #0051a9;
-  padding: 0 1rem;
-  color: white;
+  gap: 8px;
+
+  width: 100%;
+  height: 64px;
+  min-height: 64px;
+
+  padding: 0 16px;
+
+  background: var(--locs-primary, #B85C43);
+  color: #FFFFFF;
+
+  box-sizing: border-box;
+  overflow: visible;
+
+  box-shadow: 0 3px 12px rgba(40, 35, 30, 0.14);
 }
+
+/* =========================================
+   SÍMBOLO DA MARCA
+========================================= */
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 44px;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+
+  padding: 0;
+  border: none;
+  border-radius: 13px;
+
+  background: rgba(255, 255, 255, 0.16);
+  color: #FFFFFF;
+
+  box-sizing: border-box;
+  overflow: visible;
+
+  cursor: pointer;
+
+  transition:
+    background-color var(--locs-transition, 180ms ease),
+    transform var(--locs-transition, 180ms ease);
+}
+
+.brand-mark mat-icon,
+.brand-mark .mat-icon {
+  display: block;
+  flex-shrink: 0;
+
+  width: 28px;
+  min-width: 28px;
+  height: 28px;
+
+  font-size: 28px;
+  line-height: 28px;
+
+  overflow: visible;
+}
+
+/* =========================================
+   NOME E SLOGAN
+========================================= */
+
+.brand-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2px;
+
+  min-width: 0;
+  padding: 0 2px;
+
+  border: none;
+  background: transparent;
+  color: #FFFFFF;
+
+  text-align: left;
+  font-family: inherit;
+
+  cursor: pointer;
+}
+
+.brand-name {
+  display: block;
+
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: 2.2px;
+}
+
+.brand-tagline {
+  display: block;
+
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.1px;
+
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* =========================================
+   ESPAÇADOR
+========================================= */
 
 .spacer {
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
-button {
-  color: white;
-}
+/* =========================================
+   BOTÃO DO MENU
+========================================= */
 
 .hamburger-button {
-  z-index: 1003; /* Acima do sidenav e do backdrop */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 44px;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+
+  padding: 0;
+  border: none;
+  border-radius: 13px;
+
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.13);
+
+  box-sizing: border-box;
+  cursor: pointer;
+
+  transition:
+    background-color var(--locs-transition, 180ms ease),
+    transform var(--locs-transition, 180ms ease);
 }
 
-mat-sidenav-container {
-  position: absolute;
-  top: 64px; /* Começa abaixo da toolbar */
+.hamburger-button mat-icon {
+  display: block;
+  flex-shrink: 0;
+
+  width: 24px;
+  height: 24px;
+
+  font-size: 24px;
+  line-height: 24px;
+}
+
+/* Interações */
+
+.brand-mark:hover,
+.hamburger-button:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.brand-mark:active,
+.hamburger-button:active {
+  transform: scale(0.96);
+}
+
+.brand-copy:hover .brand-name {
+  opacity: 0.9;
+}
+
+/* =========================================
+   MENU LATERAL
+========================================= */
+
+.locs-sidenav-container {
+  position: fixed;
+  top: 64px;
   left: 0;
   right: 0;
   bottom: 0;
-  background: transparent;
+
   z-index: 1001;
+
+  background: transparent;
   pointer-events: none;
 }
 
-mat-sidenav {
-  width: 250px;
-  background-color: #ffffff;
-  padding: 16px;
-  z-index: 1002;
+.locs-sidenav {
+  width: 290px;
+  max-width: 88vw;
+
+  padding: 12px;
+
+  box-sizing: border-box;
+
+  background: var(--locs-surface, #FFFFFF);
+  color: var(--locs-text, #39312E);
+
+  border-left: 1px solid var(--locs-border, #E8DDD2);
+  box-shadow: -6px 0 24px rgba(40, 35, 30, 0.10);
+
   pointer-events: auto;
 }
 
-mat-sidenav-content {
-  display: none;
-}
-
-/* Garante que o backdrop seja clicável e quase transparente */
-.mat-sidenav-backdrop.mat-sidenav-shown {
-  background-color: rgba(0, 0, 0, 0.1);
-  pointer-events: auto;
-}
-
-mat-nav-list a {
-  color: #333;
-  font-size: 1rem;
-  line-height: 2.5;
-}
-
-mat-nav-list a:hover {
-  background-color: #f0f0f0;
-  color: #0051a9;
-}
-
-.sidenav-user {
-  padding: 16px;
-  margin: 0;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #333;
-  border-bottom: 1px solid #e0e0e0;
-}
+/* =========================================
+   CABEÇALHO DO MENU
+========================================= */
 
 .sidenav-header {
   display: flex;
-  justify-content: flex-end;
-  padding: 8px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 8px 4px 16px;
+
+  border-bottom: 1px solid var(--locs-border, #E8DDD2);
+}
+
+.sidenav-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sidenav-title {
+  color: var(--locs-text, #39312E);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.sidenav-subtitle {
+  color: var(--locs-text-muted, #8B817A);
+  font-size: 12px;
 }
 
 .sidenav-header button {
-  color: #333;
-  size: 5px;
+  color: var(--locs-text-secondary, #76584A);
+}
+
+/* =========================================
+   IDENTIFICAÇÃO DO USUÁRIO
+========================================= */
+
+.sidenav-user {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  margin: 8px 0 12px;
+  padding: 14px;
+
+  border-radius: var(--locs-radius-md, 12px);
+
+  background: var(--locs-primary-soft, #F4E5DE);
+}
+
+.user-greeting {
+  color: var(--locs-text-secondary, #76584A);
+  font-size: 12px;
+}
+
+.sidenav-user strong {
+  color: var(--locs-text, #39312E);
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+/* =========================================
+   LINKS DO MENU
+========================================= */
+
+.locs-sidenav mat-nav-list {
+  padding-top: 10px;
+}
+
+.locs-sidenav mat-nav-list a {
+  margin-bottom: 4px;
+  border-radius: var(--locs-radius-sm, 8px);
+
+  color: var(--locs-text, #39312E);
+
+  transition:
+    background-color var(--locs-transition, 180ms ease),
+    color var(--locs-transition, 180ms ease);
+}
+
+.locs-sidenav mat-nav-list a mat-icon {
+  color: var(--locs-primary, #B85C43);
+}
+
+.locs-sidenav mat-nav-list a:hover {
+  background: var(--locs-primary-soft, #F4E5DE);
+  color: var(--locs-primary-hover, #9F4B35);
+}
+
+/* =========================================
+   ACESSIBILIDADE
+========================================= */
+
+.locs-toolbar button:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 2px;
+}
+
+.locs-sidenav a:focus-visible,
+.sidenav-header button:focus-visible {
+  outline: 2px solid var(--locs-primary, #B85C43);
+  outline-offset: -2px;
+}
+
+/* =========================================
+   CELULARES
+========================================= */
+
+@media (max-width: 480px) {
+  .locs-toolbar {
+    padding: 0 12px;
+    gap: 7px;
+  }
+
+  .brand-mark {
+    flex-basis: 42px;
+    width: 42px;
+    min-width: 42px;
+    height: 42px;
+  }
+
+  .brand-mark mat-icon,
+  .brand-mark .mat-icon {
+    width: 28px;
+    min-width: 28px;
+    height: 28px;
+    font-size: 28px;
+    line-height: 28px;
+  }
+
+  .brand-name {
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+
+  .brand-tagline {
+    font-size: 9px;
+  }
+
+  .hamburger-button {
+    flex-basis: 42px;
+    width: 42px;
+    min-width: 42px;
+    height: 42px;
+  }
+}
+
+/* =========================================
+   MOVIMENTO REDUZIDO
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-mark,
+  .hamburger-button,
+  .locs-sidenav mat-nav-list a {
+    transition: none;
+  }
 }

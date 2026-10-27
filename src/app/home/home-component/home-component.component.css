@@ -1,5 +1,4 @@
 
-
 /* =========================================
    CONTAINER PRINCIPAL
 ========================================= */
@@ -11,7 +10,8 @@
 
 .home-container {
   min-height: 100dvh;
-  background: #f5f7fb;
+  background: var(--locs-background, #FAF6F0);
+  color: var(--locs-text, #39312E);
   box-sizing: border-box;
 }
 
@@ -38,9 +38,9 @@
   min-height: 64px;
   padding: 6px 12px calc(6px + env(safe-area-inset-bottom));
 
-  background: #ffffff;
-  border-top: 1px solid #e2e8f0;
-  box-shadow: 0 -3px 12px rgba(15, 23, 42, 0.06);
+  background: var(--locs-surface, #FFFFFF);
+  border-top: 1px solid var(--locs-border, #E8DDD2);
+  box-shadow: 0 -3px 12px rgba(57, 49, 46, 0.06);
 
   box-sizing: border-box;
 }
@@ -53,29 +53,39 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: 4px;
 
-  padding: 3px 0;
+  padding: 5px 0;
   border: none;
+  border-radius: var(--locs-radius-md, 12px);
   background: transparent;
 
-  color: #64748b;
+  color: var(--locs-text-muted, #8B817A);
   font: inherit;
   font-size: 11px;
   line-height: 1.2;
 
   cursor: pointer;
+
+  transition:
+    color var(--locs-transition, 180ms ease),
+    background-color var(--locs-transition, 180ms ease);
 }
 
 .nav-item .material-icons {
-  font-size: 21px;
+  font-size: 22px;
   line-height: 1;
   margin: 0;
 }
 
 .nav-item.ativo {
-  color: #2563eb;
+  color: var(--locs-primary, #B85C43);
   font-weight: 600;
+}
+
+.nav-item:focus-visible {
+  outline: 2px solid var(--locs-primary, #B85C43);
+  outline-offset: 2px;
 }
 
 /* =========================================
@@ -87,14 +97,14 @@
     left: 50%;
     right: auto;
     transform: translateX(-50%);
+
     width: min(100%, 600px);
 
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--locs-border, #E8DDD2);
     border-bottom: none;
     border-radius: 16px 16px 0 0;
   }
 }
-
 
 /* =========================================
    CABEÇALHO DA ABA EXPLORAR
@@ -107,32 +117,45 @@
 
 .explorar h2 {
   margin: 0 0 7px;
-  color: #172b4d;
+
+  color: var(--locs-text, #39312E);
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.3;
 }
 
 .explorar p {
   margin: 0;
-  color: #64748b;
+
+  color: var(--locs-text-secondary, #76584A);
   font-size: 16px;
   line-height: 1.5;
 }
 
-@media (max-width: 600px) {
-  .explorar {
-    margin: 12px 0 16px;
-  }
+/* =========================================
+   TÍTULO DA ABA EXPLORAR
+========================================= */
 
-  .explorar h2 {
-    font-size: 19px;
-    font-weight: 600;
-  }
+.titulo-explorar {
+  margin: 22px 16px 24px;
+}
 
-  .explorar p {
-    font-size: 13px;
-  }
+.titulo-explorar h1 {
+  margin: 0 0 6px;
+
+  color: var(--locs-text, #39312E);
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.4px;
+}
+
+.titulo-explorar p {
+  margin: 0;
+
+  color: var(--locs-text-secondary, #76584A);
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 /* =========================================
@@ -155,21 +178,23 @@
   min-height: 112px;
   padding: 16px;
 
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  background: #ffffff;
-  color: #172b4d;
+  border: 1px solid var(--locs-border, #E8DDD2);
+  border-radius: var(--locs-radius-lg, 16px);
+
+  background: var(--locs-surface, #FFFFFF);
+  color: var(--locs-text, #39312E);
 
   font: inherit;
   font-size: 0.95rem;
   font-weight: 600;
   text-align: left;
 
-  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.04);
+  box-shadow: var(--locs-shadow-sm, 0 2px 8px rgba(57, 49, 46, 0.05));
 
   transition:
-    transform 0.18s ease,
-    box-shadow 0.18s ease;
+    transform var(--locs-transition, 180ms ease),
+    box-shadow var(--locs-transition, 180ms ease),
+    border-color var(--locs-transition, 180ms ease);
 
   cursor: pointer;
 }
@@ -182,10 +207,20 @@
   width: 42px;
   height: 42px;
 
-  border-radius: 12px;
-  background: #e8f0fe;
-  color: #2563eb;
+  border-radius: var(--locs-radius-md, 12px);
+
+  background: var(--locs-primary-soft, #F4E5DE);
+  color: var(--locs-primary, #B85C43);
+
   font-size: 24px;
+}
+
+@media (hover: hover) {
+  .categorias-atalhos button:hover {
+    border-color: var(--locs-sand, #E9D5C2);
+    box-shadow: var(--locs-shadow-hover, 0 8px 22px rgba(57, 49, 46, 0.12));
+    transform: translateY(-2px);
+  }
 }
 
 .categorias-atalhos button:active {
@@ -193,7 +228,7 @@
 }
 
 .categorias-atalhos button:focus-visible {
-  outline: 3px solid #9dcaff;
+  outline: 3px solid var(--locs-primary, #B85C43);
   outline-offset: 3px;
 }
 
@@ -208,8 +243,6 @@
 /* =========================================
    ORGANIZAÇÃO DA ABA EXPLORAR
 ========================================= */
-
-/* Permite organizar os elementos internos da lista */
 
 .explorar app-empresa-lista {
   display: contents;
@@ -227,7 +260,7 @@
   margin: 0 0 10px;
 }
 
-/* 2. Atalhos logo abaixo da pesquisa */
+/* 2. Atalhos abaixo da pesquisa */
 
 .explorar app-empresa-lista .categorias-atalhos {
   order: 2;
@@ -253,16 +286,39 @@
     margin: 6px 0 10px;
   }
 
-  .explorar-texto h2 {
+  .explorar h2 {
+    font-size: 19px;
+    font-weight: 600;
+  }
+
+  .explorar p {
+    font-size: 13px;
+  }
+
+  .titulo-explorar {
+    margin: 16px 12px 18px;
+  }
+
+  .titulo-explorar h1 {
     font-size: 19px;
   }
 
-  .explorar-texto p {
+  .titulo-explorar p {
     font-size: 13px;
   }
 
   .home-content {
-    padding-bottom: calc(80px + env(safe-area-inset-bottom));
+    padding-bottom: calc(90px + env(safe-area-inset-bottom));
+  }
+
+  .categorias-atalhos {
+    gap: 10px;
+  }
+
+  .categorias-atalhos button {
+    min-height: 104px;
+    padding: 13px;
+    font-size: 14px;
   }
 }
 
@@ -271,31 +327,8 @@
 ========================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .categorias-atalhos button {
+  .categorias-atalhos button,
+  .nav-item {
     transition: none;
   }
-}
-
-/* =========================================
-   TÍTULO DA ABA EXPLORAR
-========================================= */
-
-.titulo-explorar {
-  margin: 22px 16px 24px;
-}
-
-.titulo-explorar h1 {
-  margin: 0 0 6px;
-  color: #17365f;
-  font-size: 23px;
-  font-weight: 750;
-  line-height: 1.3;
-  letter-spacing: -0.5px;
-}
-
-.titulo-explorar p {
-  margin: 0;
-  color: #718096;
-  font-size: 14px;
-  line-height: 1.5;
 }

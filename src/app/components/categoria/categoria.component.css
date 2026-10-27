@@ -44,13 +44,19 @@
 :host ::ng-deep input.mat-mdc-input-element {
   width: 100%;
   padding: 0;
-  color: #334765;
+  color: var(--locs-text, #39312E);
   font-family: inherit;
   font-size: 15px;
   line-height: 1.4;
 }
 
 :host ::ng-deep input.mat-mdc-input-element::placeholder {
-  color: #718096;
+  color: var(--locs-text-muted, #8B817A);
   opacity: 1;
+}
+
+/* Destaque de foco na identidade visual do LOCS */
+:host ::ng-deep .mat-mdc-form-field.mat-focused
+.mat-mdc-input-element {
+  caret-color: var(--locs-primary, #B85C43);
 }

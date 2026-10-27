@@ -6,6 +6,302 @@
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
+
+
+
+
+
+
+/* =========================================
+   CONFIGURAÇÃO DO TEMA DO LOCS
+========================================= */
+
+/* ALTERE ESTA LINHA PARA TROCAR O TEMA */
+:root {
+  --locs-theme: terracota;
+}
+
+/* TEMA 1 — TERRACOTA + AREIA */
+:root,
+:root[data-theme="terracota"] {
+  --locs-primary: #B85C43;
+  --locs-primary-hover: #9F4B35;
+  --locs-primary-active: #883F2D;
+  --locs-primary-soft: #F4E5DE;
+
+  --locs-background: #FAF6F0;
+  --locs-surface: #FFFFFF;
+  --locs-surface-soft: #F5EDE4;
+  --locs-sand: #E9D5C2;
+  --locs-sand-light: #F0E5D8;
+
+  --locs-text: #39312E;
+  --locs-text-secondary: #76584A;
+  --locs-text-muted: #8B817A;
+
+  --locs-border: #E8DDD2;
+  --locs-border-strong: #D8C6B7;
+
+  --locs-shadow-sm: 0 2px 8px rgba(57, 49, 46, 0.05);
+  --locs-shadow-md: 0 5px 18px rgba(57, 49, 46, 0.08);
+  --locs-shadow-hover: 0 8px 22px rgba(57, 49, 46, 0.12);
+
+  --locs-success: #357653;
+  --locs-success-soft: #E5F1E9;
+  --locs-warning: #A56A20;
+  --locs-warning-soft: #FAEED9;
+  --locs-error: #B84036;
+  --locs-error-soft: #F9E6E3;
+
+  --locs-radius-sm: 8px;
+  --locs-radius-md: 12px;
+  --locs-radius-lg: 16px;
+  --locs-radius-xl: 20px;
+
+  --locs-transition: 180ms ease;
+}
+
+/* TEMA 2 — AZUL + BRANCO */
+:root[data-theme="azul"] {
+  --locs-primary: #2457A7;
+  --locs-primary-hover: #1B4487;
+  --locs-primary-active: #15366D;
+  --locs-primary-soft: #E8F0FE;
+
+  --locs-background: #F5F7FB;
+  --locs-surface: #FFFFFF;
+  --locs-surface-soft: #EDF2F9;
+  --locs-sand: #C9D9F0;
+  --locs-sand-light: #E5ECF7;
+
+  --locs-text: #243247;
+  --locs-text-secondary: #52657F;
+  --locs-text-muted: #75849A;
+
+  --locs-border: #DFE6F0;
+  --locs-border-strong: #C8D4E5;
+
+  --locs-shadow-sm: 0 2px 8px rgba(25, 50, 90, 0.05);
+  --locs-shadow-md: 0 5px 18px rgba(25, 50, 90, 0.08);
+  --locs-shadow-hover: 0 8px 22px rgba(25, 50, 90, 0.12);
+
+  --locs-success: #287849;
+  --locs-success-soft: #E5F4EA;
+  --locs-warning: #98631B;
+  --locs-warning-soft: #FFF2D8;
+  --locs-error: #B84036;
+  --locs-error-soft: #F9E6E3;
+
+  --locs-radius-sm: 8px;
+  --locs-radius-md: 12px;
+  --locs-radius-lg: 16px;
+  --locs-radius-xl: 20px;
+
+  --locs-transition: 180ms ease;
+}
+
+
+/* =========================================
+   TEMA 3 — VERDE OLIVA + CREME
+========================================= */
+
+:root[data-theme="oliva"] {
+  --locs-primary: #687747;
+  --locs-primary-hover: #53613A;
+  --locs-primary-active: #424D2E;
+  --locs-primary-soft: #E9EDDF;
+
+  --locs-background: #F7F5ED;
+  --locs-surface: #FFFFFF;
+  --locs-surface-soft: #F0EFE4;
+  --locs-sand: #D9D8BF;
+  --locs-sand-light: #EAE8D7;
+
+  --locs-text: #34382B;
+  --locs-text-secondary: #62684F;
+  --locs-text-muted: #858775;
+
+  --locs-border: #E1E0D2;
+  --locs-border-strong: #CBCBB5;
+
+  --locs-shadow-sm: 0 2px 8px rgba(52, 56, 43, 0.05);
+  --locs-shadow-md: 0 5px 18px rgba(52, 56, 43, 0.08);
+  --locs-shadow-hover: 0 8px 22px rgba(52, 56, 43, 0.12);
+
+  --locs-success: #357653;
+  --locs-success-soft: #E5F1E9;
+  --locs-warning: #A56A20;
+  --locs-warning-soft: #FAEED9;
+  --locs-error: #B84036;
+  --locs-error-soft: #F9E6E3;
+
+  --locs-radius-sm: 8px;
+  --locs-radius-md: 12px;
+  --locs-radius-lg: 16px;
+  --locs-radius-xl: 20px;
+
+  --locs-transition: 180ms ease;
+}
+
+
+
+/* =========================================
+   BASE GLOBAL
+========================================= */
+
+html,
+body {
+  background: var(--locs-background);
+  color: var(--locs-text);
+}
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+/* =========================================
+   BOTÕES PRINCIPAIS
+   Use .btn-primary nos botões apropriados
+========================================= */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 42px;
+  padding: 10px 16px;
+
+  color: #FFFFFF;
+  background: var(--locs-primary);
+  border: 1px solid var(--locs-primary);
+  border-radius: var(--locs-radius-md);
+
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+
+  cursor: pointer;
+  transition:
+    background var(--locs-transition),
+    box-shadow var(--locs-transition),
+    transform var(--locs-transition);
+}
+
+.btn-primary:hover {
+  background: var(--locs-primary-hover);
+  border-color: var(--locs-primary-hover);
+  box-shadow: var(--locs-shadow-sm);
+}
+
+.btn-primary:active {
+  background: var(--locs-primary-active);
+  transform: scale(0.98);
+}
+
+.btn-primary:focus-visible {
+  outline: 3px solid var(--locs-sand);
+  outline-offset: 3px;
+}
+
+/* Botões secundários */
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 42px;
+  padding: 10px 16px;
+
+  color: var(--locs-primary-hover);
+  background: var(--locs-primary-soft);
+  border: 1px solid var(--locs-border);
+  border-radius: var(--locs-radius-md);
+
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+
+  transition:
+    background var(--locs-transition),
+    transform var(--locs-transition);
+}
+
+.btn-secondary:hover {
+  background: var(--locs-sand-light);
+}
+
+/* =========================================
+   CAMPOS DE FORMULÁRIO
+========================================= */
+
+input,
+textarea,
+select {
+  accent-color: var(--locs-primary);
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--locs-primary);
+  outline-offset: 2px;
+}
+
+/* =========================================
+   CARTÕES E SUPERFÍCIES
+   Classe opcional para novos componentes
+========================================= */
+
+.locs-card {
+  background: var(--locs-surface);
+  border: 1px solid var(--locs-border);
+  border-radius: var(--locs-radius-lg);
+  box-shadow: var(--locs-shadow-sm);
+
+  transition:
+    box-shadow var(--locs-transition),
+    border-color var(--locs-transition);
+}
+
+.locs-card:hover {
+  border-color: var(--locs-border-strong);
+  box-shadow: var(--locs-shadow-md);
+}
+
+/* =========================================
+   SELEÇÃO DE TEXTO E ACESSIBILIDADE
+========================================= */
+
+::selection {
+  color: var(--locs-text);
+  background: var(--locs-sand);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+
 /* =========================================
    DOCUMENTO E ROLAGEM
 ========================================= */
