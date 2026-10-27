@@ -1,19 +1,27 @@
 
+
 /* =========================================
    CONTAINER PRINCIPAL
 ========================================= */
 
+:host {
+  display: block;
+  min-height: 100%;
+}
+
 .home-container {
   min-height: 100dvh;
   background: #f5f7fb;
+  box-sizing: border-box;
 }
 
 .home-content {
-  padding-bottom: calc(58px + env(safe-area-inset-bottom));
+  padding-bottom: calc(90px + env(safe-area-inset-bottom));
+  box-sizing: border-box;
 }
 
 /* =========================================
-   NAVEGAÇÃO INFERIOR
+   NAVEGAÇÃO INFERIOR FIXA
 ========================================= */
 
 .bottom-nav {
@@ -27,7 +35,8 @@
   justify-content: space-around;
   align-items: center;
 
-  padding: 4px 12px calc(4px + env(safe-area-inset-bottom));
+  min-height: 64px;
+  padding: 6px 12px calc(6px + env(safe-area-inset-bottom));
 
   background: #ffffff;
   border-top: 1px solid #e2e8f0;
@@ -44,7 +53,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: 3px;
 
   padding: 3px 0;
   border: none;
@@ -59,7 +68,7 @@
 }
 
 .nav-item .material-icons {
-  font-size: 20px;
+  font-size: 21px;
   line-height: 1;
   margin: 0;
 }
@@ -69,18 +78,23 @@
   font-weight: 600;
 }
 
-/* Navegação em telas maiores */
+/* =========================================
+   TELAS MAIORES
+========================================= */
+
 @media (min-width: 768px) {
   .bottom-nav {
     left: 50%;
     right: auto;
     transform: translateX(-50%);
     width: min(100%, 600px);
+
     border: 1px solid #e2e8f0;
     border-bottom: none;
     border-radius: 16px 16px 0 0;
   }
 }
+
 
 /* =========================================
    CABEÇALHO DA ABA EXPLORAR
@@ -184,6 +198,7 @@
 }
 
 /* Quatro atalhos em telas maiores */
+
 @media (min-width: 600px) {
   .categorias-atalhos {
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -195,6 +210,7 @@
 ========================================= */
 
 /* Permite organizar os elementos internos da lista */
+
 .explorar app-empresa-lista {
   display: contents;
 }
@@ -204,6 +220,7 @@
 }
 
 /* 1. Pesquisa no topo */
+
 .explorar app-empresa-lista .categoria {
   order: 1;
   width: 100%;
@@ -211,6 +228,7 @@
 }
 
 /* 2. Atalhos logo abaixo da pesquisa */
+
 .explorar app-empresa-lista .categorias-atalhos {
   order: 2;
   width: 100%;
@@ -218,6 +236,7 @@
 }
 
 /* 3. Resultados, carregamento e mensagens */
+
 .explorar app-empresa-lista .content,
 .explorar app-empresa-lista .loading,
 .explorar app-empresa-lista .error {
@@ -240,6 +259,10 @@
 
   .explorar-texto p {
     font-size: 13px;
+  }
+
+  .home-content {
+    padding-bottom: calc(80px + env(safe-area-inset-bottom));
   }
 }
 

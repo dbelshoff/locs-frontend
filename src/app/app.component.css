@@ -1,4 +1,4 @@
-html, body {
+/*html, body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -13,5 +13,4 @@ html, body {
 .content {
   flex: 1;
   padding-top: 64px; /* espaço para a toolbar fixa */
-}
-
+/*}*/
